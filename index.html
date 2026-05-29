@@ -51,18 +51,20 @@ video{display:block;width:100%}
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(10,8,4,0.96) 0%, rgba(10,8,4,0.6) 45%, rgba(10,8,4,0.15) 100%);z-index:1}
-.hero-logo-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;text-align:center;pointer-events:none}
-.hero-logo-img{width:clamp(80px,12vw,140px);height:clamp(80px,12vw,140px);border-radius:50%;object-fit:cover;margin:0 auto 16px;box-shadow:0 0 0 2px rgba(201,168,76,0.4), 0 0 48px rgba(0,0,0,0.8);opacity:0.92}
-.hero-logo-name{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,1.8vw,20px);font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.85)}
-.hero-logo-sub{font-size:clamp(8px,1vw,10px);font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(8,6,2,0.97) 0%, rgba(8,6,2,0.72) 40%, rgba(8,6,2,0.25) 70%, rgba(8,6,2,0.08) 100%);z-index:1}
+/* Logo: top-left, above the cow visually */
+.hero-logo-top{position:absolute;top:clamp(20px,3vw,36px);left:clamp(20px,3.5vw,48px);z-index:4;display:flex;align-items:center;gap:14px;pointer-events:none}
+.hero-logo-img{width:clamp(52px,6vw,72px);height:clamp(52px,6vw,72px);border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px rgba(201,168,76,0.55),0 4px 24px rgba(0,0,0,0.7)}
+.hero-logo-text{display:flex;flex-direction:column;gap:2px}
+.hero-logo-name{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.6vw,19px);font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#fff;line-height:1}
+.hero-logo-sub{font-size:clamp(8px,0.9vw,10px);font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-top:2px}
 .hero-content{position:relative;z-index:2;padding:clamp(48px,6vw,80px) clamp(24px,5vw,80px)}
 .hero-event-label{display:inline-flex;align-items:center;gap:10px;padding:6px 16px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.35);border-radius:100px;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
 .hero-flags{font-size:1rem;margin-right:4px}
-.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,7vw,88px);font-weight:500;line-height:0.97;letter-spacing:-0.03em;color:#fff;margin-bottom:20px;max-width:14ch}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,7vw,88px);font-weight:600;line-height:0.97;letter-spacing:-0.03em;color:#fff;margin-bottom:20px;max-width:14ch;text-shadow:0 2px 32px rgba(0,0,0,0.7),0 1px 4px rgba(0,0,0,0.9)}
 .hero-h1 em{color:var(--gold);font-style:italic}
 .hero-meta{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:36px}
-.hero-meta-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.75)}
+.hero-meta-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.92);font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,0.8)}
 .hero-meta-item svg{color:var(--gold);flex-shrink:0}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
 .btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--gold);color:var(--obsidian);font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border-radius:4px;transition:all 0.2s;border:none;cursor:pointer}
@@ -140,6 +142,55 @@ video{display:block;width:100%}
 .gallery-caption{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:16px}
 .gallery-item:hover .gallery-caption{opacity:1}
 .gallery-caption span{font-size:11px;color:rgba(255,255,255,0.9);font-weight:500;letter-spacing:0.04em}
+
+/* ── DOCUMENTARY ── */
+.doc-intro{max-width:760px;margin:0 auto 64px;text-align:center}
+.doc-intro p{font-size:15px;color:var(--slate);line-height:1.75;margin-bottom:16px}
+.doc-chapter{margin-bottom:80px}
+.doc-chapter:last-child{margin-bottom:0}
+.doc-chapter-label{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:24px}
+.doc-chapter-label::before{content:'';display:inline-block;width:20px;height:1.5px;background:var(--gold)}
+.doc-chapter-label::after{content:'';display:inline-block;width:20px;height:1.5px;background:var(--gold)}
+/* Full-bleed hero photo */
+.doc-hero{border-radius:8px;overflow:hidden;aspect-ratio:16/7;position:relative;cursor:pointer;margin-bottom:32px}
+.doc-hero img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.doc-hero:hover img{transform:scale(1.02)}
+.doc-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,4,0.75) 0%,transparent 55%);pointer-events:none}
+.doc-hero-caption{position:absolute;bottom:0;left:0;right:0;padding:32px 40px;pointer-events:none}
+.doc-hero-caption h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(22px,3vw,36px);color:#fff;margin-bottom:8px;line-height:1.1}
+.doc-hero-caption p{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.5;max-width:560px}
+/* 2-col photo layout */
+.doc-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.doc-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+.doc-photo{border-radius:6px;overflow:hidden;position:relative;cursor:pointer}
+.doc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}
+.doc-photo:hover img{transform:scale(1.04)}
+.doc-photo-info{padding:16px 0 0}
+.doc-photo-num{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:0.18em;color:var(--gold-deep);margin-bottom:4px}
+.doc-photo-cap{font-size:13px;font-weight:500;color:var(--obsidian);line-height:1.4;margin-bottom:4px}
+.doc-photo-sub{font-size:11px;color:var(--slate);line-height:1.5}
+.doc-quote-block{background:var(--cream);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:28px 32px;margin:32px 0}
+.doc-quote-block blockquote{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;font-style:italic;color:var(--obsidian);line-height:1.4;margin-bottom:12px}
+.doc-quote-block cite{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-deep)}
+/* Network cards row */
+.doc-network-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:40px 0}
+.doc-net-card{background:var(--white);border:1px solid var(--hairline);border-radius:6px;overflow:hidden;transition:all 0.25s;cursor:pointer}
+.doc-net-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,15,15,0.07)}
+.doc-net-img{width:100%;height:200px;object-fit:cover;object-position:center top;display:block}
+.doc-net-body{padding:18px 20px}
+.doc-net-badge{display:inline-block;padding:2px 10px;border-radius:3px;background:var(--obsidian);color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:0.1em;margin-bottom:10px}
+.doc-net-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--obsidian);margin-bottom:4px;line-height:1.2}
+.doc-net-role{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+.doc-net-desc{font-size:12px;color:var(--slate);line-height:1.55}
+/* Video gallery row */
+.doc-video-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:32px 0}
+.doc-vid-wrap{border-radius:6px;overflow:hidden;position:relative;background:#000;cursor:pointer}
+.doc-vid-wrap video{width:100%;display:block;max-height:360px;object-fit:cover}
+.doc-vid-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);transition:background 0.2s;pointer-events:none}
+.doc-vid-wrap:hover .doc-vid-overlay{background:rgba(0,0,0,0.15)}
+.doc-vid-play{width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,0.9);display:flex;align-items:center;justify-content:center;transition:transform 0.2s}
+.doc-vid-wrap:hover .doc-vid-play{transform:scale(1.1)}
+.doc-vid-cap{padding:10px 0 0;font-size:11px;color:var(--slate);line-height:1.4}
 
 /* ── LIGHTBOX ── */
 .lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
@@ -394,6 +445,18 @@ video{display:block;width:100%}
 .embassy-quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,28px);font-weight:500;line-height:1.35;color:var(--obsidian);margin-bottom:20px}
 .embassy-source{font-size:12px;color:var(--slate)}
 .embassy-source strong{color:var(--obsidian)}
+/* Embassy photo pair — 2 actual photos from the post */
+.embassy-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.embassy-photo{border-radius:5px;overflow:hidden;aspect-ratio:4/3;position:relative;cursor:pointer}
+.embassy-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s ease}
+.embassy-photo:hover img{transform:scale(1.04)}
+.embassy-photo-cap{position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(to top,rgba(10,8,4,0.82) 0%,transparent 100%);font-size:10px;color:rgba(255,255,255,0.85);font-weight:500;letter-spacing:0.03em;line-height:1.3}
+.embassy-source-bar{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding:10px 14px;background:var(--cream-deep);border-radius:5px;border:1px solid var(--hairline)}
+.embassy-source-bar-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-light)}
+.embassy-source-bar a{font-size:10px;font-weight:600;letter-spacing:0.06em;color:var(--gold-deep);display:flex;align-items:center;gap:5px;transition:color 0.2s}
+.embassy-source-bar a:hover{color:var(--gold)}
+.embassy-post-tag{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:10px;color:var(--slate-light)}
+.embassy-post-tag-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--sa-green),var(--ru-red));flex-shrink:0}
 .hashtags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .hashtag{font-size:10px;font-weight:600;letter-spacing:0.06em;padding:4px 12px;border-radius:100px}
 .hashtag.sa{background:rgba(45,125,70,0.12);color:var(--sa-green)}
@@ -483,6 +546,15 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
   <div class="hero-bg"><img src="images/ankole-herd.jpg" alt="Ankole cattle herd — Studex Global Markets" /></div>
   <div class="hero-overlay"></div>
 
+  <!-- Logo: top-left, floating above the cow -->
+  <div class="hero-logo-top">
+    <img class="hero-logo-img" src="logos/studex-global-markets.jpg" alt="Studex Global Markets">
+    <div class="hero-logo-text">
+      <span class="hero-logo-name">Studex Global Markets</span>
+      <span class="hero-logo-sub">Africa's Davos · 2026</span>
+    </div>
+  </div>
+
   <!-- Bottom content -->
   <div class="hero-content">
     <div class="container">
@@ -567,6 +639,10 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
         <span style="font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-light)">Russian Federation</span>
       </div>
     </div>
+    <a class="partner-logo-item" href="https://www.nda.gov.za" target="_blank" rel="noopener">
+      <img src="https://www.nda.gov.za/images/agriculture-logo_cmyk1.jpg" alt="Department of Agriculture, Land Reform and Rural Development" style="height:44px;width:auto;max-width:130px;object-fit:contain">
+      <span>DALRRD</span>
+    </a>
   </div>
 </div>
 
@@ -604,17 +680,62 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
 <section class="section alt" id="embassy">
   <div class="container">
     <div class="embassy-grid">
+
+      <!-- LEFT: quote + context -->
       <div class="embassy-quote" data-reveal>
-        <p class="embassy-quote-text">"Russia's Deputy Minister of Agriculture and the Rector of the University discussed with Tumelo Ramaphosa, CEO of StudEx Group, prospects for cooperation in agronomy and new technologies in fruit and vegetable growing."</p>
-        <div class="embassy-source"><strong>Russian Embassy in the Republic of South Africa</strong> — Official Communiqué, April 2025</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px;display:flex;align-items:center;gap:10px">
+          <span style="display:inline-block;width:16px;height:1px;background:var(--gold)"></span>
+          Official Record &middot; April 2025
+        </div>
+        <p class="embassy-quote-text">&ldquo;Russia&rsquo;s Deputy Minister of Agriculture and the Rector of the University discussed with <strong>Tumelo Ramaphosa, CEO of StudEx Group</strong>, prospects for cooperation in agronomy and new technologies in fruit and vegetable growing.&rdquo;</p>
+        <div class="embassy-source" style="margin-bottom:10px">
+          <strong>Russian Embassy in the Republic of South Africa</strong><br>
+          Official Communiqu&eacute;, published April 2025
+        </div>
+        <div style="font-size:12px;color:var(--slate);line-height:1.65;margin-bottom:18px">
+          Confirmed independently by the <strong>Russian State Agrarian University &ndash; Moscow Timiryazev Agricultural Academy</strong>: &ldquo;The visit was an important step in strengthening international cooperation in research and development in agriculture.&rdquo;
+        </div>
         <div class="hashtags">
           <span class="hashtag sa">#RussiaSouthAfrica</span>
           <span class="hashtag ru">#RussiaAfrica</span>
         </div>
       </div>
-      <div class="embassy-image" data-reveal data-delay="2">
-        <img src="images/img-09.jpg" alt="Russian Embassy South Africa post about Studex delegation">
+
+      <!-- RIGHT: the two actual photos from the Embassy Facebook post -->
+      <div data-reveal data-delay="2">
+        <div class="embassy-photos">
+          <!-- Left photo in FB post: full delegation in front of university building -->
+          <div class="embassy-photo" onclick="openLb(1)">
+            <img src="images/img-02.jpg" alt="SA delegation at Timiryazev University — from Embassy post">
+            <div class="embassy-photo-cap">SA Delegation &middot; Timiryazev University</div>
+          </div>
+          <!-- Right photo in FB post: Tumelo walking with Rector Trukhachev -->
+          <div class="embassy-photo" onclick="openLb(2)">
+            <img src="images/img-03.jpg" alt="Tumelo Ramaphosa walks with Rector Trukhachev">
+            <div class="embassy-photo-cap">Tumelo &times; Rector Trukhachev</div>
+          </div>
+        </div>
+        <!-- Source bars linking to original posts -->
+        <div class="embassy-source-bar">
+          <span class="embassy-source-bar-label">Original Post</span>
+          <a href="https://www.facebook.com/RusEmbassySouthAfrica/posts/1003872618589792" target="_blank" rel="noopener">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Russian Embassy South Africa &middot; Facebook
+          </a>
+        </div>
+        <div class="embassy-source-bar" style="margin-top:6px">
+          <span class="embassy-source-bar-label">Also confirmed by</span>
+          <a href="http://www.eng.timacad.ru" target="_blank" rel="noopener">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Timiryazev Academy &middot; Official Website
+          </a>
+        </div>
+        <div class="embassy-post-tag">
+          <span class="embassy-post-tag-dot"></span>
+          Photos sourced from the Russian Embassy&rsquo;s official post confirming the bilateral meeting, April 2025
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1075,62 +1196,7 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
   </div>
 </section>
 
-<hr class="divider">
 
-<!-- ── VIDEO REEL ── -->
-<section class="section" id="reel">
-  <div class="container">
-    <div class="sec-header" data-reveal>
-      <div class="sec-eyebrow">Behind the scenes</div>
-      <h2 class="sec-title">In the <em>Field</em></h2>
-      <p class="sec-sub">From bilateral meetings to boxing training sessions — Studex Global Markets in motion.</p>
-    </div>
-    <div class="reel-grid">
-      <div class="reel-item" onclick="this.querySelector('video').paused ? this.querySelector('video').play() : this.querySelector('video').pause()" data-reveal>
-        <video src="images/video-01.mp4" loop muted playsinline preload="metadata"></video>
-        <div class="reel-play">
-          <div class="reel-play-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--obsidian)"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="reel-item" onclick="this.querySelector('video').paused ? this.querySelector('video').play() : this.querySelector('video').pause()" data-reveal data-delay="1">
-        <video src="images/video-02.mp4" loop muted playsinline preload="metadata"></video>
-        <div class="reel-play">
-          <div class="reel-play-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--obsidian)"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="reel-item" onclick="this.querySelector('video').paused ? this.querySelector('video').play() : this.querySelector('video').pause()" data-reveal data-delay="2">
-        <video src="images/video-03.mp4" loop muted playsinline preload="metadata"></video>
-        <div class="reel-play">
-          <div class="reel-play-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--obsidian)"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="reel-item" onclick="this.querySelector('video').paused ? this.querySelector('video').play() : this.querySelector('video').pause()" data-reveal data-delay="3">
-        <video src="images/video-04.mp4" loop muted playsinline preload="metadata"></video>
-        <div class="reel-play">
-          <div class="reel-play-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--obsidian)"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="reel-item" onclick="this.querySelector('video').paused ? this.querySelector('video').play() : this.querySelector('video').pause()" data-reveal data-delay="4">
-        <video src="images/video-05.mp4" loop muted playsinline preload="metadata"></video>
-        <div class="reel-play">
-          <div class="reel-play-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--obsidian)"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
 
 <!-- ── MINISTERS FEATURE ── -->
 <section class="section alt" id="ministers">
@@ -1169,52 +1235,652 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
   </div>
 </section>
 
-<!-- ── GALLERY ── -->
-<section class="section" id="gallery">
-  <div class="container">
-    <div class="sec-header" data-reveal>
-      <div class="sec-eyebrow">From Moscow to Johannesburg</div>
-      <h2 class="sec-title">The <em>Delegation</em> Visit</h2>
-      <p class="sec-sub">StudEx Enterprise's official visit to the Russian Timiryazev State Agrarian University — the foundation of Trade Week SA–Russia.</p>
+<!-- ── CINEMATIC GALLERY: MISSION IN MOSCOW ── -->
+
+<!-- Add cinematic CSS -->
+<style>
+/* ─── HUASHU CINEMATIC SYSTEM ─── */
+
+/* Pull-quote editorial marker */
+.cin-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-deep);
+  margin-bottom:20px;
+}
+.cin-eyebrow::before,.cin-eyebrow::after{
+  content:'';display:inline-block;width:24px;height:1px;background:var(--gold);
+}
+
+/* Full-bleed cinematic frame — image fills width, caption overlays bottom */
+.cin-frame{
+  position:relative;width:100%;overflow:hidden;
+  cursor:pointer;
+}
+.cin-frame img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.cin-frame:hover img{transform:scale(1.025)}
+.cin-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(10,8,4,0.88) 0%,
+    rgba(10,8,4,0.4) 38%,
+    rgba(10,8,4,0.0) 65%
+  );
+  pointer-events:none;
+}
+.cin-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:clamp(20px,3vw,48px) clamp(20px,4vw,56px);
+  pointer-events:none;
+}
+.cin-caption-num{
+  font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:0.24em;color:var(--gold);margin-bottom:10px;display:block;
+}
+.cin-caption-title{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(18px,2.8vw,38px);line-height:1.1;letter-spacing:-0.01em;
+  color:#fff;margin-bottom:8px;
+}
+.cin-caption-sub{
+  font-size:clamp(11px,1.2vw,14px);color:rgba(255,255,255,0.72);
+  line-height:1.55;max-width:580px;
+}
+
+/* Hero frame — ultra tall for maximum drama */
+.cin-hero{aspect-ratio:16/8;}
+/* Portrait frame */
+.cin-portrait{aspect-ratio:3/4;}
+/* Wide frame */
+.cin-wide{aspect-ratio:21/9;}
+/* Square frame */
+.cin-square{aspect-ratio:1/1;}
+/* Tall-ish — meeting/group shots */
+.cin-tall{aspect-ratio:4/3;}
+
+/* Side-by-side split */
+.cin-split{
+  display:grid;
+  gap:0;
+}
+.cin-split-50{grid-template-columns:1fr 1fr;}
+.cin-split-60-40{grid-template-columns:3fr 2fr;}
+.cin-split-40-60{grid-template-columns:2fr 3fr;}
+
+/* 3-col grid */
+.cin-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+
+/* Full-width text pull between images */
+.cin-pull{
+  background:var(--obsidian);
+  padding:clamp(48px,7vw,96px) clamp(24px,5vw,80px);
+  text-align:center;
+}
+.cin-pull-quote{
+  font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;
+  font-size:clamp(22px,3.5vw,48px);line-height:1.25;letter-spacing:-0.01em;
+  color:var(--cream);max-width:16ch;margin:0 auto 20px;
+}
+.cin-pull-quote em{color:var(--gold);font-style:normal;}
+.cin-pull-attr{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-deep);
+}
+
+/* Narrative text strip — cream bg, left-aligned editorial */
+.cin-text{
+  background:var(--cream);
+  padding:clamp(40px,5vw,72px) clamp(24px,8vw,160px);
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:clamp(24px,4vw,64px);
+  align-items:start;
+}
+.cin-text.full{grid-template-columns:1fr;}
+.cin-text-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-deep);
+  padding-top:6px;
+}
+.cin-text-body{
+  font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:clamp(17px,1.6vw,22px);line-height:1.65;color:var(--obsidian);
+}
+.cin-text-body strong{font-weight:600;color:var(--gold-deep);}
+.cin-text-body p+p{margin-top:1em;}
+
+/* Video panel — full width, autoplay ambient */
+.cin-video-panel{
+  position:relative;overflow:hidden;background:#000;
+  cursor:pointer;
+}
+.cin-video-panel video{
+  width:100%;display:block;
+  transition:opacity 0.4s;
+}
+.cin-video-panel .cin-play-ring{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.28);
+  transition:background 0.3s;
+}
+.cin-video-panel:hover .cin-play-ring{background:rgba(0,0,0,0.1);}
+.cin-play-circle{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(201,168,76,0.85);
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(4px);
+  transition:transform 0.25s,background 0.25s;
+  box-shadow:0 0 0 1px rgba(201,168,76,0.3),0 8px 24px rgba(0,0,0,0.4);
+}
+.cin-video-panel:hover .cin-play-circle{
+  transform:scale(1.12);background:rgba(201,168,76,1);
+}
+.cin-play-circle svg{margin-left:4px;}
+
+/* 5-video grid — mixed aspect ratios */
+.cin-video-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:2px;
+  background:var(--obsidian);
+}
+.cin-video-grid .cin-video-panel:nth-child(1){
+  grid-row:span 2;
+}
+
+/* Transition: small dot separator */
+.cin-divider{
+  display:flex;align-items:center;justify-content:center;
+  padding:32px 0;background:var(--white);
+}
+.cin-divider-inner{
+  display:flex;align-items:center;gap:12px;
+}
+.cin-divider-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:0.6;
+}
+.cin-divider-line{width:60px;height:1px;background:var(--hairline);}
+
+/* Network portrait card — editorial */
+.cin-person-strip{
+  display:grid;
+  gap:0;
+}
+.cin-person{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:520px;
+}
+.cin-person.reverse{direction:rtl;}
+.cin-person.reverse > *{direction:ltr;}
+.cin-person-img{
+  overflow:hidden;position:relative;
+}
+.cin-person-img img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  display:block;
+  transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.cin-person:hover .cin-person-img img{transform:scale(1.03);}
+.cin-person-content{
+  background:var(--obsidian);
+  padding:clamp(40px,5vw,72px) clamp(32px,4vw,60px);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.cin-person.alt .cin-person-content{background:var(--cream);}
+.cin-person-badge{
+  display:inline-block;padding:3px 12px;
+  background:var(--gold);color:var(--obsidian);
+  font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;border-radius:2px;
+  margin-bottom:20px;align-self:flex-start;
+}
+.cin-person-name{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(28px,3.5vw,48px);line-height:1.05;letter-spacing:-0.02em;
+  color:var(--cream);margin-bottom:10px;
+}
+.cin-person.alt .cin-person-name{color:var(--obsidian);}
+.cin-person-role{
+  font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+}
+.cin-person.alt .cin-person-role{color:var(--gold-deep);}
+.cin-person-desc{
+  font-size:14px;color:rgba(255,255,255,0.68);line-height:1.7;
+}
+.cin-person.alt .cin-person-desc{color:var(--slate);}
+
+/* Section title — floating over edge of photo */
+.cin-section-intro{
+  padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 0;
+  background:var(--white);
+}
+.cin-section-title{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(36px,6vw,80px);line-height:0.95;letter-spacing:-0.03em;
+  color:var(--obsidian);
+}
+.cin-section-title em{color:var(--gold-deep);font-style:italic;}
+
+/* Responsive */
+@media(max-width:900px){
+  .cin-split-50,.cin-split-60-40,.cin-split-40-60{grid-template-columns:1fr;}
+  .cin-trio{grid-template-columns:1fr 1fr;}
+  .cin-person{grid-template-columns:1fr;min-height:auto;}
+  .cin-person-img{aspect-ratio:16/9;}
+  .cin-video-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .cin-video-grid .cin-video-panel:nth-child(1){grid-row:span 1;}
+  .cin-text{grid-template-columns:1fr;padding:clamp(32px,4vw,56px) clamp(20px,5vw,40px);}
+}
+@media(max-width:600px){
+  .cin-trio{grid-template-columns:1fr;}
+  .cin-video-grid{grid-template-columns:1fr;}
+  .cin-hero{aspect-ratio:4/3;}
+  .cin-wide{aspect-ratio:16/9;}
+}
+</style>
+
+<!-- ═══════════════════════════════════════════════════════
+     THE CINEMATIC RECORD — MISSION IN MOSCOW
+═══════════════════════════════════════════════════════ -->
+
+<!-- INTRO TITLE -->
+<div class="cin-section-intro" id="gallery">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="cin-eyebrow" style="margin-bottom:24px" data-reveal>The Documentary Record · April 2025</div>
+    <h2 class="cin-section-title" data-reveal>
+      Mission in<br><em>Moscow</em>
+    </h2>
+    <p style="font-size:clamp(14px,1.5vw,18px);color:var(--slate);line-height:1.7;max-width:640px;margin:24px 0 0" data-reveal>
+      South Africa's first formal agri-trade delegation to Russia's oldest agricultural university.
+      These are the pictures. They speak for themselves.
+    </p>
+  </div>
+</div>
+
+<!-- ─── ACT 1: ARRIVAL — img-01 grand hall ─── -->
+<!-- Full-bleed hero: the moment of arrival -->
+<div class="cin-frame cin-hero" onclick="openLb(0)" data-reveal style="margin-top:40px">
+  <img src="images/img-01.jpg" alt="Formal reception — Timiryazev University grand hall, 1865" loading="lazy">
+  <div class="cin-overlay"></div>
+  <div class="cin-caption">
+    <span class="cin-caption-num">01 / 09 · TIMIRYAZEV UNIVERSITY · MOSCOW · APRIL 2025</span>
+    <div class="cin-caption-title">Received at the Grand Hall</div>
+    <div class="cin-caption-sub">Tumelo Ramaphosa and the South African delegation stand inside Russia's most historic agricultural institution — founded 1865. The founding plaque visible on the wall behind them. The first meeting between two agricultural worlds.</div>
+  </div>
+</div>
+
+<!-- Text context strip -->
+<div class="cin-text">
+  <div class="cin-text-label">Chapter One<br>Arrival</div>
+  <div class="cin-text-body">
+    <p>In April 2025, <strong>Tumelo Ramaphosa</strong> led the first South African agri-trade delegation to the Russian Timiryazev State Agrarian University — Russia's oldest and most prestigious agricultural institution, operating continuously since 1865.</p>
+    <p>The visit was not symbolic. It produced a formal bilateral engagement with <strong>Russia's Deputy Minister of Agriculture, Maxim Uvaidov</strong>, and Rector <strong>Vladimir Trukhachev</strong> — a conversation about the future of agronomy, seed science, and agricultural technology cooperation between two continents.</p>
+    <p>What you see in these images is the foundation of <strong>Trade Week SA–Russia 2026</strong>.</p>
+  </div>
+</div>
+
+<!-- Split: img-02 delegation banner + img-03 handshake -->
+<div class="cin-split cin-split-60-40" data-reveal>
+  <div class="cin-frame" style="min-height:420px" onclick="openLb(1)">
+    <img src="images/img-02.jpg" alt="StudEx Enterprise delegation — 22 April 2025" loading="lazy">
+    <div class="cin-overlay"></div>
+    <div class="cin-caption">
+      <span class="cin-caption-num">02 / 09 · 22 APRIL 2025</span>
+      <div class="cin-caption-title">The Delegation</div>
+      <div class="cin-caption-sub">Eight delegates. One continent. Beneath the StudEx Enterprise banner at Timiryazev. Tumelo at centre — the youngest African CEO to lead a formal agri-trade delegation here.</div>
+    </div>
+  </div>
+  <div class="cin-frame" style="min-height:420px" onclick="openLb(2)">
+    <img src="images/img-03.jpg" alt="Tumelo meets Rector Trukhachev — the handshake" loading="lazy">
+    <div class="cin-overlay"></div>
+    <div class="cin-caption">
+      <span class="cin-caption-num">03 / 09 · THE HANDSHAKE</span>
+      <div class="cin-caption-title">Tumelo meets Rector Trukhachev</div>
+      <div class="cin-caption-sub">Outside the red-brick facade. Two institutional heads. One shared vision for agricultural cooperation across borders.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PULL QUOTE ─── -->
+<div class="cin-pull" data-reveal>
+  <div class="cin-eyebrow" style="margin:0 auto 32px;color:var(--gold)">Official Record</div>
+  <div class="cin-pull-quote">"Russia's Deputy Minister of Agriculture discussed with <em>Tumelo Ramaphosa</em> prospects for cooperation in agronomy and new technologies."</div>
+  <div class="cin-pull-attr">— Russian Embassy Communiqué · April 2025</div>
+</div>
+
+<!-- ─── ACT 2: SESSIONS — img-04 joint session ─── -->
+<div class="cin-frame cin-hero" onclick="openLb(3)" data-reveal>
+  <img src="images/img-04.jpg" alt="Joint SA–Russia bilateral session" loading="lazy">
+  <div class="cin-overlay"></div>
+  <div class="cin-caption">
+    <span class="cin-caption-num">04 / 09 · THE JOINT SESSION</span>
+    <div class="cin-caption-title">Two Delegations. One Table.</div>
+    <div class="cin-caption-sub">South African and Russian delegates seated together in the Timiryazev campus conference room. The session covered agricultural technology transfer, fruit and vegetable agronomy, and new cooperative frameworks that will define the next decade of SA–Russia trade.</div>
+  </div>
+</div>
+
+<!-- Video 1 — ambient, plays on hover/click, full width -->
+<div class="cin-video-panel" style="aspect-ratio:16/6;max-height:480px" onclick="toggleVid(this)" data-reveal>
+  <video src="images/video-01.mp4" poster="images/thumb-01.jpg" preload="none" playsinline muted loop style="width:100%;height:100%;object-fit:cover"></video>
+  <div class="cin-play-ring">
+    <div class="cin-play-circle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--obsidian)"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+  </div>
+  <div class="cin-caption" style="pointer-events:none">
+    <span class="cin-caption-num">FIELD FOOTAGE · MOSCOW DELEGATION · 2025</span>
+  </div>
+</div>
+
+<!-- ─── Trio: img-07 portrait, img-09 embassy post, img-05 lab 1 ─── -->
+<div class="cin-trio" data-reveal>
+  <div class="cin-frame cin-square" onclick="openLb(6)">
+    <img src="images/img-07.jpg" alt="Tumelo Ramaphosa — Moscow" loading="lazy" style="object-position:center top">
+    <div class="cin-overlay"></div>
+    <div class="cin-caption">
+      <span class="cin-caption-num">07 / 09</span>
+      <div class="cin-caption-title">The Founder</div>
+      <div class="cin-caption-sub">Timiryazev grounds. Blue suit. Natural light. A continent's ambition behind the gaze.</div>
+    </div>
+  </div>
+  <div class="cin-frame cin-square" onclick="openLb(8)">
+    <img src="images/img-09.jpg" alt="Russian Embassy official communiqué" loading="lazy">
+    <div class="cin-overlay"></div>
+    <div class="cin-caption">
+      <span class="cin-caption-num">OFFICIAL RECORD</span>
+      <div class="cin-caption-title">The Embassy Confirmation</div>
+      <div class="cin-caption-sub">Deputy Minister Maxim Uvaidov met with Tumelo Ramaphosa. It is on the record.</div>
+    </div>
+  </div>
+  <div class="cin-frame cin-square" onclick="openLb(4)">
+    <img src="images/img-05.jpg" alt="Biotech laboratory — Moscow" loading="lazy">
+    <div class="cin-overlay"></div>
+    <div class="cin-caption">
+      <span class="cin-caption-num">05 / 09 · BIOTECH LAB</span>
+      <div class="cin-caption-title">The Science Visit</div>
+      <div class="cin-caption-sub">Researcher demonstrates cutting-edge biotech equipment. Africa pays attention.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ACT 3: SCIENCE & SEEDS — img-06 seed centre ─── -->
+<div class="cin-frame cin-hero" onclick="openLb(5)" data-reveal>
+  <img src="images/img-06.jpg" alt="RGAU-MSXA Seed Selection Centre" loading="lazy">
+  <div class="cin-overlay"></div>
+  <div class="cin-caption">
+    <span class="cin-caption-num">06 / 09 · RGAU-MSXA SEED SELECTION CENTRE</span>
+    <div class="cin-caption-title">Where Seeds Become Strategy</div>
+    <div class="cin-caption-sub">Russia's premier plant breeding and seed selection laboratory. Eight delegates including Tumelo Ramaphosa receive a private briefing on drought-resistant cultivars, advanced selection techniques, and licensing pathways for African soil conditions.</div>
+  </div>
+</div>
+
+<!-- Split: img-08 Systec lab + text context -->
+<div class="cin-split cin-split-50" data-reveal>
+  <div class="cin-frame" style="min-height:480px" onclick="openLb(7)">
+    <img src="images/img-08.jpg" alt="Systec autoclave laboratory" loading="lazy">
+    <div class="cin-overlay"></div>
+    <div class="cin-caption">
+      <span class="cin-caption-num">08 / 09 · SYSTEC AUTOCLAVE LAB</span>
+      <div class="cin-caption-title">Advanced Processing Science</div>
+      <div class="cin-caption-sub">Tumelo alongside scientist МОНАХОС/СОКРАТ in the Systec bioprocessing facility. Direct application to Studex Meat's premium product infrastructure.</div>
+    </div>
+  </div>
+  <div style="background:var(--cream);padding:clamp(40px,5vw,72px) clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center;">
+    <div class="cin-eyebrow" style="margin-bottom:20px">What This Proves</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,34px);font-weight:500;line-height:1.15;letter-spacing:-0.02em;color:var(--obsidian);margin-bottom:20px">
+      Russia's science.<br><span style="color:var(--gold-deep);font-style:italic">Africa's scale.</span>
+    </div>
+    <p style="font-size:15px;color:var(--slate);line-height:1.72;margin-bottom:16px">
+      The most valuable commodity in the new Africa is not a mineral — it is knowledge. Russia holds some of the world's most advanced agri-science in seed genetics, bioprocessing, and soil technology.
+    </p>
+    <p style="font-size:15px;color:var(--slate);line-height:1.72;margin-bottom:32px">
+      Trade Week 2026 is the bridge — where bilateral conversations move from university halls into binding agreements, live demonstrations, and co-investment frameworks.
+    </p>
+    <a href="#register" class="btn-primary" style="align-self:flex-start">Join Trade Week →</a>
+  </div>
+</div>
+
+<!-- ─── ACT 4: THE GLOBAL NETWORK — cinematic person strips ─── -->
+<div class="cin-text full" style="text-align:center;padding-bottom:0" data-reveal>
+  <div>
+    <div class="cin-eyebrow" style="margin:0 auto 20px;justify-content:center">The Network That Makes This Possible</div>
+    <h2 class="cin-section-title">Building Bridges<br><em>Across Borders</em></h2>
+    <p style="font-size:clamp(14px,1.4vw,17px);color:var(--slate);line-height:1.7;max-width:600px;margin:20px auto 0">
+      From Dubai's commodity exchange floors to boxing diplomacy in Johannesburg — Tumelo Ramaphosa's global network gives Trade Week SA–Russia reach that no other platform in Africa can match.
+    </p>
+  </div>
+</div>
+
+<!-- Person 1: DMCC Dubai — full split, dark -->
+<div class="cin-person" data-reveal>
+  <div class="cin-person-img" onclick="openLb(9)">
+    <img src="images/tumelo-dmcc-crypto-centre.jpg" alt="Tumelo Ramaphosa with Ahmed Bin Suleman at DMCC Dubai Crypto Centre" loading="lazy">
+  </div>
+  <div class="cin-person-content">
+    <span class="cin-person-badge">Dubai · UAE</span>
+    <div class="cin-person-name">Ahmed Bin Suleman</div>
+    <div class="cin-person-role">CEO · Dubai Multi Commodity Centre</div>
+    <div class="cin-person-desc">
+      Tumelo at the DMCC Crypto Centre — the world's largest free-trade zone — alongside its CEO. A direct pipeline for African commodities, premium meat, and agricultural products into global markets. The DMCC processes over $100 billion in annual trade. This relationship opens that door for South Africa.
+    </div>
+  </div>
+</div>
+
+<!-- Person 2: Minister Zizi Kodwa — reversed, cream -->
+<div class="cin-person alt reverse" data-reveal>
+  <div class="cin-person-img" onclick="openLb(10)">
+    <img src="images/tumelo-zizi-kodwa-boxing.jpg" alt="Tumelo Ramaphosa with Minister Zizi Kodwa at Mandela Boxing Cup" loading="lazy">
+  </div>
+  <div class="cin-person-content">
+    <span class="cin-person-badge">Johannesburg · South Africa</span>
+    <div class="cin-person-name">Minister Zizi Kodwa</div>
+    <div class="cin-person-role">Minister of Sports, Arts & Culture</div>
+    <div class="cin-person-desc">
+      Sport is diplomacy. Studex Global Markets chairs the Mandela African Boxing Cup, a cultural exchange initiative backed at ministerial level by Minister Kodwa. Where policy meets the people — and where Trade Week's reach extends beyond the boardroom into a continent's identity.
+    </div>
+  </div>
+</div>
+
+<!-- Person 3: IBA President Kremlev — dark -->
+<div class="cin-person" data-reveal>
+  <div class="cin-person-img" onclick="openLb(11)">
+    <img src="images/tumelo-umar-kremlev-iba.jpg" alt="Tumelo Ramaphosa presents Biltong Gold to IBA President Umar Kremlev" loading="lazy">
+  </div>
+  <div class="cin-person-content">
+    <span class="cin-person-badge">Moscow · Russia</span>
+    <div class="cin-person-name">Umar Kremlev</div>
+    <div class="cin-person-role">President · International Boxing Association (IBA)</div>
+    <div class="cin-person-desc">
+      Tumelo Ramaphosa presents <strong style="color:var(--gold)">Biltong Gold</strong> — Studex Meat's flagship product — to IBA President Umar Kremlev. This is what trade looks like when it's done right: not a contract, but a cultural moment. South Africa's most iconic protein product, in the hands of global sport's most powerful figure, in Moscow.
+    </div>
+  </div>
+</div>
+
+<!-- ─── ACT 5: THE VIDEOS — portrait card row ─── -->
+<div id="video-docs" style="background:var(--obsidian);padding:clamp(56px,7vw,88px) 0" data-reveal>
+
+  <!-- Section header -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px) 48px">
+    <div class="cin-eyebrow" style="color:var(--gold);margin-bottom:20px">In Motion</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,5vw,60px);line-height:0.95;letter-spacing:-0.03em;color:var(--cream);margin-bottom:14px">The Story,<br><em style="color:var(--gold)">Moving</em></h2>
+    <p style="font-size:15px;color:var(--slate-light);line-height:1.7;max-width:520px">
+      Five videos. Field footage, diplomacy in action, and Studex Meat reaching the world's most powerful tables.
+    </p>
+  </div>
+
+  <!-- 5 vertical portrait video cards -->
+  <div class="vid-grid" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:start">
+
+    <!-- Card 1: Boxing diplomacy boardroom -->
+    <div class="vid-card" onclick="playVidCard(this)">
+      <div class="vid-card-frame">
+        <video src="images/video-01.mp4" poster="images/thumb-01.jpg" preload="none" playsinline muted loop></video>
+        <div class="vid-card-overlay">
+          <div class="vid-card-play">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--obsidian)"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="vid-card-badge">01</div>
+      </div>
+      <div class="vid-card-body">
+        <div class="vid-card-tag">Boxing Diplomacy</div>
+        <div class="vid-card-title">The Boardroom</div>
+        <div class="vid-card-sub">Bilateral deal discussion with boxing belt on the table &mdash; Lamborghinis in the background.</div>
+      </div>
+    </div>
+
+    <!-- Card 2: Kremlev tasting biltong — Serpukhov -->
+    <div class="vid-card" onclick="playVidCard(this)">
+      <div class="vid-card-frame">
+        <video src="images/video-02.mp4" poster="images/thumb-02.jpg" preload="none" playsinline muted loop></video>
+        <div class="vid-card-overlay">
+          <div class="vid-card-play">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--obsidian)"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="vid-card-badge">02</div>
+      </div>
+      <div class="vid-card-body">
+        <div class="vid-card-tag vid-card-tag-gold">Studex Meat</div>
+        <div class="vid-card-title">Kremlev Tries Biltong</div>
+        <div class="vid-card-sub">IBA President Umar Kremlev tastes Studex biltong in Serpukhov, Russia. studexmeat.com on screen.</div>
+      </div>
+    </div>
+
+    <!-- Card 3: Boxing training outdoors Russia -->
+    <div class="vid-card" onclick="playVidCard(this)">
+      <div class="vid-card-frame">
+        <video src="images/video-03.mp4" poster="images/thumb-03.jpg" preload="none" playsinline muted loop></video>
+        <div class="vid-card-overlay">
+          <div class="vid-card-play">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--obsidian)"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="vid-card-badge">03</div>
+      </div>
+      <div class="vid-card-body">
+        <div class="vid-card-tag">Boxing</div>
+        <div class="vid-card-title">Training in Russia</div>
+        <div class="vid-card-sub">Live boxing training footage from the Mandela African Boxing Cup preparation sessions, Russia.</div>
+      </div>
+    </div>
+
+    <!-- Card 4: World Youth Festival — RT interview -->
+    <div class="vid-card" onclick="playVidCard(this)">
+      <div class="vid-card-frame">
+        <video src="images/video-04.mp4" poster="images/thumb-04.jpg" preload="none" playsinline muted loop></video>
+        <div class="vid-card-overlay">
+          <div class="vid-card-play">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--obsidian)"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="vid-card-badge">04</div>
+      </div>
+      <div class="vid-card-body">
+        <div class="vid-card-tag vid-card-tag-ru">World Youth Festival</div>
+        <div class="vid-card-title">Live on RT · Sirius</div>
+        <div class="vid-card-sub">Tumelo interviewed live by RT at the 4th day of the World Youth Festival, Southern Russia.</div>
+      </div>
+    </div>
+
+    <!-- Card 5: World Youth Festival — Rosatom pavilion -->
+    <div class="vid-card" onclick="playVidCard(this)">
+      <div class="vid-card-frame">
+        <video src="images/video-05.mp4" poster="images/thumb-05.jpg" preload="none" playsinline muted loop></video>
+        <div class="vid-card-overlay">
+          <div class="vid-card-play">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--obsidian)"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="vid-card-badge">05</div>
+      </div>
+      <div class="vid-card-body">
+        <div class="vid-card-tag vid-card-tag-ru">Rosatom Pavilion</div>
+        <div class="vid-card-title">Quantum &amp; Trade</div>
+        <div class="vid-card-sub">Interview at Rosatom / Росмолодёжь pavilion, World Youth Festival &mdash; quantum tech and bilateral trade.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── FULL GALLERY GRID ─── -->
+<div style="background:var(--white);padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px)" id="gallery-grid">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="sec-header" data-reveal style="margin-bottom:36px">
+      <div class="sec-eyebrow">Complete Record</div>
+      <h2 class="sec-title">All <em>Images</em></h2>
+      <p class="sec-sub">Click any image to open full-screen. Use arrow keys to navigate.</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item tall" data-reveal onclick="openLb(0)">
-        <img src="images/img-07.jpg" alt="Tumelo Ramaphosa, CEO StudEx Group">
-        <div class="gallery-caption"><span>Tumelo Ramaphosa, CEO — Moscow</span></div>
+        <img src="images/img-01.jpg" alt="Grand Hall Reception — Timiryazev 1865">
+        <div class="gallery-caption"><span>Grand Hall · Timiryazev University · 1865</span></div>
       </div>
       <div class="gallery-item wide" data-reveal data-delay="1" onclick="openLb(1)">
-        <img src="images/img-02.jpg" alt="Studex Enterprise delegation banner at Timiryazev University">
-        <div class="gallery-caption"><span>Official Visit — Timiryazev State Agrarian University</span></div>
+        <img src="images/img-02.jpg" alt="StudEx Enterprise delegation banner — 22 April 2025">
+        <div class="gallery-caption"><span>StudEx Enterprise Delegation · 22 April 2025</span></div>
       </div>
       <div class="gallery-item" data-reveal data-delay="2" onclick="openLb(2)">
-        <img src="images/img-03.jpg" alt="Handshake — bilateral introductions">
-        <div class="gallery-caption"><span>Bilateral introductions, Moscow</span></div>
+        <img src="images/img-03.jpg" alt="Tumelo meets Rector Trukhachev">
+        <div class="gallery-caption"><span>Tumelo × Rector Trukhachev</span></div>
       </div>
       <div class="gallery-item" data-reveal onclick="openLb(3)">
-        <img src="images/img-04.jpg" alt="Delegation at conference presentation">
-        <div class="gallery-caption"><span>Agricultural technology presentation</span></div>
+        <img src="images/img-04.jpg" alt="Joint bilateral session">
+        <div class="gallery-caption"><span>The Joint Session</span></div>
       </div>
       <div class="gallery-item" data-reveal data-delay="1" onclick="openLb(4)">
-        <img src="images/img-05.jpg" alt="Laboratory visit">
-        <div class="gallery-caption"><span>Research laboratory tour</span></div>
+        <img src="images/img-05.jpg" alt="Biotech laboratory visit">
+        <div class="gallery-caption"><span>Biotech Research Lab</span></div>
       </div>
       <div class="gallery-item" data-reveal data-delay="2" onclick="openLb(5)">
-        <img src="images/img-06.jpg" alt="Agri-science research centre">
-        <div class="gallery-caption"><span>Agri-Science Research Centre</span></div>
+        <img src="images/img-06.jpg" alt="Seed Selection Centre">
+        <div class="gallery-caption"><span>RGAU-MSXA Seed Centre</span></div>
       </div>
-      <div class="gallery-item wide" data-reveal onclick="openLb(6)">
-        <img src="images/img-08.jpg" alt="Advanced agriculture laboratory">
-        <div class="gallery-caption"><span>Advanced agriculture laboratory, Moscow</span></div>
+      <div class="gallery-item tall" data-reveal onclick="openLb(6)">
+        <img src="images/img-07.jpg" alt="Tumelo Ramaphosa — Moscow" style="object-position:center top">
+        <div class="gallery-caption"><span>Tumelo Ramaphosa · CEO · Moscow</span></div>
+      </div>
+      <div class="gallery-item wide" data-reveal data-delay="1" onclick="openLb(7)">
+        <img src="images/img-08.jpg" alt="Systec Autoclave Lab">
+        <div class="gallery-caption"><span>Systec Autoclave Laboratory</span></div>
+      </div>
+      <div class="gallery-item" data-reveal data-delay="2" onclick="openLb(8)">
+        <img src="images/img-09.jpg" alt="Russian Embassy official communiqué">
+        <div class="gallery-caption"><span>Embassy Record · Deputy Minister Uvaidov</span></div>
+      </div>
+      <div class="gallery-item" data-reveal onclick="openLb(9)">
+        <img src="images/tumelo-dmcc-crypto-centre.jpg" alt="Tumelo at DMCC Dubai">
+        <div class="gallery-caption"><span>DMCC Dubai · Ahmed Bin Suleman</span></div>
+      </div>
+      <div class="gallery-item" data-reveal data-delay="1" onclick="openLb(10)">
+        <img src="images/tumelo-zizi-kodwa-boxing.jpg" alt="Tumelo and Minister Zizi Kodwa">
+        <div class="gallery-caption"><span>Minister Zizi Kodwa · Mandela Boxing Cup</span></div>
+      </div>
+      <div class="gallery-item" data-reveal data-delay="2" onclick="openLb(11)">
+        <img src="images/tumelo-umar-kremlev-iba.jpg" alt="Tumelo with IBA President Kremlev — Biltong Gold">
+        <div class="gallery-caption"><span>IBA President Kremlev · Biltong Gold</span></div>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <img id="lb-img" src="" alt="">
   <div class="lb-close" onclick="closeLb()">&times;</div>
   <div class="lb-nav lb-prev" onclick="navLb(-1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
   <div class="lb-nav lb-next" onclick="navLb(1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
 </div>
+
 
 <!-- ── AGENDA ── -->
 <section class="section alt" id="agenda">
@@ -1485,6 +2151,176 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
 <style>
 @media(max-width:768px){
   .nav-links.mobile-open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--hairline);padding:16px 24px;gap:16px;z-index:200}
+  .doc-duo{grid-template-columns:1fr}
+  .doc-trio{grid-template-columns:1fr}
+  .doc-network-row{grid-template-columns:1fr}
+  .doc-video-row{grid-template-columns:1fr 1fr}
+  .doc-hero{aspect-ratio:4/3}
+  .doc-hero-caption{padding:20px 20px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .gallery-item.tall{grid-row:span 1}
+}
+@media(max-width:480px){
+  .doc-video-row{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+  .gallery-item.wide,.gallery-item.tall{grid-column:1;grid-row:span 1}
+}
+
+/* ── VID-CARD: Portrait video cards ── */
+.vid-card{
+  display:flex;
+  flex-direction:column;
+  cursor:pointer;
+  border-radius:4px;
+  overflow:hidden;
+  background:#111;
+  transition:transform 0.25s ease,box-shadow 0.25s ease;
+}
+.vid-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.6),0 0 0 1px rgba(201,168,76,0.25);
+}
+.vid-card.is-playing{
+  box-shadow:0 0 0 2px var(--gold),0 16px 48px rgba(201,168,76,0.2);
+}
+
+/* Frame: 9:16 portrait aspect ratio */
+.vid-card-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:9/16;
+  overflow:hidden;
+  background:#000;
+}
+.vid-card-frame video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Overlay: fades out when playing */
+.vid-card-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(160deg,rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.55) 60%,rgba(0,0,0,0.80) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:opacity 0.3s ease;
+}
+.vid-card-overlay.playing{
+  opacity:0;
+  pointer-events:none;
+}
+.vid-card:hover .vid-card-overlay:not(.playing){
+  background:linear-gradient(160deg,rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.4) 60%,rgba(0,0,0,0.72) 100%);
+}
+
+/* Gold play button */
+.vid-card-play{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+  box-shadow:0 4px 20px rgba(0,0,0,0.5);
+  flex-shrink:0;
+}
+.vid-card:hover .vid-card-play{
+  transform:scale(1.1);
+  box-shadow:0 6px 28px rgba(201,168,76,0.5);
+}
+
+/* Number badge top-left */
+.vid-card-badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  color:rgba(255,255,255,0.7);
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:3px;
+  padding:3px 7px;
+  line-height:1;
+}
+
+/* Text body below video */
+.vid-card-body{
+  padding:16px 14px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  background:#111;
+  flex:1;
+}
+
+/* Category tags */
+.vid-card-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:3px;
+  padding:3px 8px;
+  display:inline-block;
+  width:fit-content;
+}
+.vid-card-tag-gold{
+  color:var(--gold);
+  border-color:rgba(201,168,76,0.35);
+  background:rgba(201,168,76,0.07);
+}
+.vid-card-tag-ru{
+  color:#c0392b;
+  border-color:rgba(192,57,43,0.35);
+  background:rgba(192,57,43,0.07);
+}
+
+/* Title */
+.vid-card-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(15px,1.3vw,18px);
+  font-weight:500;
+  line-height:1.2;
+  color:var(--cream);
+  letter-spacing:-0.01em;
+}
+
+/* Description */
+.vid-card-sub{
+  font-family:Inter,sans-serif;
+  font-size:12px;
+  line-height:1.55;
+  color:rgba(248,244,232,0.5);
+}
+
+/* Responsive: 2-col at tablet, 1-col at mobile */
+@media(max-width:900px){
+  .vid-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+}
+@media(max-width:560px){
+  .vid-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:8px !important;
+  }
+  .vid-card-title{font-size:14px}
+  .vid-card-body{padding:12px 10px 14px}
 }
 </style>
 
@@ -1513,13 +2349,18 @@ function switchDay(n){
 
 // Lightbox
 const lbImgs=[
-  {src:'images/img-07.jpg',alt:'Tumelo Ramaphosa, CEO — Moscow'},
-  {src:'images/img-02.jpg',alt:'Studex delegation at Timiryazev University'},
-  {src:'images/img-03.jpg',alt:'Bilateral introductions, Moscow'},
-  {src:'images/img-04.jpg',alt:'Agricultural technology presentation'},
-  {src:'images/img-05.jpg',alt:'Research laboratory tour'},
-  {src:'images/img-06.jpg',alt:'Agri-Science Research Centre'},
-  {src:'images/img-08.jpg',alt:'Advanced agriculture laboratory'},
+  {src:'images/img-01.jpg',alt:'Grand Hall Reception — Timiryazev University, founded 1865'},
+  {src:'images/img-02.jpg',alt:'StudEx Enterprise Delegation — Timiryazev State Agrarian University, 22 April 2025'},
+  {src:'images/img-03.jpg',alt:'Tumelo Ramaphosa meets Rector Vladimir Trukhachev — bilateral introduction'},
+  {src:'images/img-04.jpg',alt:'Joint SA–Russia agricultural session — Timiryazev campus conference room'},
+  {src:'images/img-05.jpg',alt:'Biotech Research Laboratory — researcher demonstrates equipment to delegation'},
+  {src:'images/img-06.jpg',alt:'RGAU-MSXA Seed Selection Centre — group visit with lead scientist'},
+  {src:'images/img-07.jpg',alt:'Tumelo Ramaphosa, Founder & CEO — Timiryazev grounds, Moscow'},
+  {src:'images/img-08.jpg',alt:'Systec Autoclave Laboratory — Tumelo with scientist МОНАХОС/СОКРАТ'},
+  {src:'images/img-09.jpg',alt:'Russian Embassy official communiqué confirming meeting with Deputy Minister Maxim Uvaidov'},
+  {src:'images/tumelo-dmcc-crypto-centre.jpg',alt:'Tumelo Ramaphosa with Ahmed Bin Suleman, CEO of Dubai Multi Commodity Centre'},
+  {src:'images/tumelo-zizi-kodwa-boxing.jpg',alt:'Tumelo Ramaphosa with Minister of Sports Zizi Kodwa — Mandela African Boxing Cup'},
+  {src:'images/tumelo-umar-kremlev-iba.jpg',alt:'Tumelo Ramaphosa presents Biltong Gold to IBA President Umar Kremlev'},
 ];
 let curLb=0;
 function openLb(i){curLb=i;const lb=document.getElementById('lightbox');document.getElementById('lb-img').src=lbImgs[i].src;lb.classList.add('open');document.body.style.overflow='hidden'}
@@ -1527,6 +2368,45 @@ function closeLb(){document.getElementById('lightbox').classList.remove('open');
 function navLb(d){curLb=(curLb+d+lbImgs.length)%lbImgs.length;document.getElementById('lb-img').src=lbImgs[curLb].src}
 document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLb()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')navLb(-1);if(e.key==='ArrowRight')navLb(1)});
+
+// Video card play/pause
+function playVidCard(card){
+  const vid=card.querySelector('video');
+  const overlay=card.querySelector('.vid-card-overlay');
+  const playBtn=card.querySelector('.vid-card-play');
+  if(!vid)return;
+  if(vid.paused){
+    // pause all other cards first
+    document.querySelectorAll('.vid-card video').forEach(v=>{
+      if(v!==vid&&!v.paused){
+        v.pause();
+        const ov=v.closest('.vid-card').querySelector('.vid-card-overlay');
+        if(ov)ov.classList.remove('playing');
+      }
+    });
+    vid.play();
+    if(overlay)overlay.classList.add('playing');
+    card.classList.add('is-playing');
+  }else{
+    vid.pause();
+    if(overlay)overlay.classList.remove('playing');
+    card.classList.remove('is-playing');
+  }
+}
+
+// Toggle video play/pause
+function toggleVid(panel){
+  const vid=panel.querySelector('video');
+  const ring=panel.querySelector('.cin-play-ring');
+  if(!vid)return;
+  if(vid.paused){
+    vid.play();
+    if(ring)ring.style.opacity='0';
+  }else{
+    vid.pause();
+    if(ring)ring.style.opacity='1';
+  }
+}
 
 // Register form
 function handleReg(e){
