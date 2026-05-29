@@ -254,25 +254,65 @@ video{display:block;width:100%}
 .context-value{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--gold-deep);margin-bottom:10px}
 .context-desc{font-size:12px;color:var(--slate-light);line-height:1.6}
 
-/* ── PARTNER STRIP ── */
-.partner-strip{background:var(--cream);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:36px 40px}
-.partner-strip-label{text-align:center;font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--slate-light);margin-bottom:28px}
-.partner-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(20px,4vw,56px)}
-.partner-logo-item{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.6;transition:all 0.25s;cursor:pointer}
-.partner-logo-item:hover{opacity:1;transform:translateY(-2px)}
-.partner-logo-item img{height:44px;width:auto;max-width:130px;object-fit:contain;filter:grayscale(100%);transition:filter 0.25s}
-.partner-logo-item:hover img{filter:grayscale(0%)}
-.partner-logo-item span{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-light);text-align:center;max-width:100px}
+/* ── PARTNER STRIP — Takram Edition ── */
+.partner-strip{background:var(--cream);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:clamp(40px,6vw,72px) clamp(24px,5vw,80px)}
+.partner-strip-label{text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--slate-light);margin-bottom:40px}
+.partner-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(28px,4vw,64px)}
+.partner-logo-item{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0.55;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer}
+.partner-logo-item:hover{opacity:1;transform:translateY(-3px)}
+.partner-logo-item img{height:40px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(100%) contrast(0.8);transition:filter 0.3s}
+.partner-logo-item:hover img{filter:grayscale(0%) contrast(1)}
+.partner-logo-item span{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate-light);text-align:center;max-width:110px;line-height:1.4}
 .studex-logo-text{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18px;color:var(--obsidian);letter-spacing:0.04em}
 
-/* ── PARTNERS FULL ── */
-.partners-full-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:48px}
-.pf-card{background:var(--white);border:1px solid var(--hairline);border-radius:6px;padding:24px;text-align:center;transition:all 0.25s}
-.pf-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,15,15,0.07)}
-.pf-card-flag{font-size:20px;margin-bottom:10px}
-.pf-card-logo{height:56px;width:auto;max-width:120px;object-fit:contain;margin:0 auto 12px}
-.pf-card-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:var(--obsidian);line-height:1.3;margin-bottom:4px}
-.pf-card-type{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-light)}
+/* ── COMPANY DIRECTORY — Takram Edition ── */
+.co-dir{padding:clamp(80px,10vw,140px) 0;background:var(--obsidian)}
+.co-dir-inner{max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,80px)}
+.co-dir-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(40px,5vw,64px);padding-bottom:20px;border-bottom:1px solid rgba(229,226,216,0.1)}
+.co-dir-count{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.8}
+.co-dir-table{width:100%;border-collapse:collapse}
+.co-dir-table thead tr{border-bottom:1px solid rgba(229,226,216,0.12)}
+.co-dir-table thead th{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,244,232,0.3);padding:0 0 14px;text-align:left;white-space:nowrap}
+.co-dir-table thead th:last-child{text-align:right}
+.co-dir-table tbody tr{border-bottom:1px solid rgba(229,226,216,0.06);transition:background 0.2s}
+.co-dir-table tbody tr:hover{background:rgba(201,168,76,0.04)}
+.co-dir-table td{padding:18px 0;vertical-align:middle}
+.co-dir-table td+td{padding-left:24px}
+.co-dir-idx{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(248,244,232,0.2);width:32px;letter-spacing:0.1em}
+.co-dir-name{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.4vw,18px);font-weight:500;color:var(--cream);letter-spacing:-0.01em;line-height:1.2}
+.co-dir-name small{display:block;font-family:Inter,sans-serif;font-size:11px;font-weight:400;color:rgba(248,244,232,0.4);letter-spacing:0.01em;margin-top:2px;font-style:normal}
+.co-dir-country{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,244,232,0.45);white-space:nowrap}
+.co-dir-flag{font-size:16px;margin-right:6px}
+.co-dir-sector{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;white-space:nowrap}
+.co-dir-sector.gov{color:rgba(201,168,76,0.9);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2)}
+.co-dir-sector.agri{color:rgba(100,180,120,0.9);background:rgba(100,180,120,0.08);border:1px solid rgba(100,180,120,0.18)}
+.co-dir-sector.commerce{color:rgba(120,160,220,0.9);background:rgba(120,160,220,0.08);border:1px solid rgba(120,160,220,0.18)}
+.co-dir-sector.sport{color:rgba(220,100,100,0.9);background:rgba(220,100,100,0.08);border:1px solid rgba(220,100,100,0.18)}
+.co-dir-sector.tech{color:rgba(180,130,220,0.9);background:rgba(180,130,220,0.08);border:1px solid rgba(180,130,220,0.18)}
+.co-dir-sector.media{color:rgba(220,180,80,0.9);background:rgba(220,180,80,0.08);border:1px solid rgba(220,180,80,0.18)}
+.co-dir-sector.finance{color:rgba(80,200,200,0.9);background:rgba(80,200,200,0.08);border:1px solid rgba(80,200,200,0.18)}
+.co-dir-sector.host{color:var(--cream);background:rgba(248,244,232,0.08);border:1px solid rgba(248,244,232,0.18)}
+.co-dir-role{font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.4);text-align:right;white-space:nowrap}
+@media(max-width:768px){
+  .co-dir-table thead th:nth-child(4),.co-dir-table td:nth-child(4){display:none}
+  .co-dir-table thead th:nth-child(5),.co-dir-table td:nth-child(5){display:none}
+  .co-dir-name{font-size:14px}
+}
+@media(max-width:560px){
+  .co-dir-table thead th:nth-child(3),.co-dir-table td:nth-child(3){display:none}
+  .co-dir-header{flex-direction:column;align-items:flex-start;gap:8px}
+}
+
+/* ── PARTNERS FULL — Takram Edition ── */
+.partners-full-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;margin-top:48px;border:1px solid var(--hairline)}
+.pf-card{background:var(--white);padding:32px 24px;text-align:center;transition:all 0.25s;border:none;position:relative;overflow:hidden}
+.pf-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:width 0.3s ease}
+.pf-card:hover::after{width:100%}
+.pf-card:hover{background:var(--cream)}
+.pf-card-flag{font-size:22px;margin-bottom:14px}
+.pf-card-logo{height:56px;width:auto;max-width:120px;object-fit:contain;margin:0 auto 14px}
+.pf-card-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;color:var(--obsidian);line-height:1.3;margin-bottom:6px}
+.pf-card-type{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate-light)}
 
 /* ── REGISTER ── */
 .register-wrap{max-width:600px;margin:0 auto;text-align:center}
@@ -528,6 +568,7 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
       <a href="#meat-legacy" class="nav-link">Meat Legacy</a>
       <a href="#agenda" class="nav-link">Agenda</a>
       <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#directory" class="nav-link">Directory</a>
       <a href="#partners" class="nav-link">Partners</a>
       <a href="#register" class="nav-link">Register</a>
     </div>
@@ -1970,6 +2011,202 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
     </div>
   </div>
 </section>
+
+<!-- ── COMPANY DIRECTORY ── -->
+<section class="co-dir" id="directory">
+  <div class="co-dir-inner">
+    <div class="co-dir-header" data-reveal>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:10px">Participating Organisations</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:var(--cream);letter-spacing:-0.02em;line-height:1;margin:0">Companies &amp; Institutions<br><em style="font-style:italic;color:var(--gold)">at Trade Week 2026</em></h2>
+      </div>
+      <div class="co-dir-count">22 Organisations · 4 Nations</div>
+    </div>
+
+    <table class="co-dir-table" data-reveal>
+      <thead>
+        <tr>
+          <th style="width:32px">#</th>
+          <th>Organisation</th>
+          <th>Country</th>
+          <th>Sector</th>
+          <th style="text-align:right">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- SOUTH AFRICA -->
+        <tr>
+          <td class="co-dir-idx">01</td>
+          <td><div class="co-dir-name">Studex Global Markets<small>Host &amp; Lead Organiser · Africa's Davos</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇿🇦</span>South Africa</div></td>
+          <td><span class="co-dir-sector host">Host</span></td>
+          <td class="co-dir-role">Event Host</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">02</td>
+          <td><div class="co-dir-name">Studex Meat<small>Premium South African Biltong &amp; Wagyu</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇿🇦</span>South Africa</div></td>
+          <td><span class="co-dir-sector agri">Agri / Food</span></td>
+          <td class="co-dir-role">Export Pioneer</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">03</td>
+          <td><div class="co-dir-name">Dept. of Agriculture, Land Reform &amp; Rural Dev.<small>DALRRD · Deputy Minister Confirmed Chair</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇿🇦</span>South Africa</div></td>
+          <td><span class="co-dir-sector gov">Government</span></td>
+          <td class="co-dir-role">Summit Chair</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">04</td>
+          <td><div class="co-dir-name">National Development Agency<small>NDA · nda.gov.za</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇿🇦</span>South Africa</div></td>
+          <td><span class="co-dir-sector gov">Government</span></td>
+          <td class="co-dir-role">Dev. Partner</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">05</td>
+          <td><div class="co-dir-name">Ministry of Sports, Arts &amp; Culture<small>Minister Zizi Kodwa · Mandela Cup Backer</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇿🇦</span>South Africa</div></td>
+          <td><span class="co-dir-sector gov">Government</span></td>
+          <td class="co-dir-role">Sports Diplomacy</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">06</td>
+          <td><div class="co-dir-name">Kalagadi Manganese<small>Grootvlei BESS Bankability Stack · USD 25–50M</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇿🇦</span>South Africa</div></td>
+          <td><span class="co-dir-sector tech">Mining / Energy</span></td>
+          <td class="co-dir-role">Deal Partner</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">07</td>
+          <td><div class="co-dir-name">Mastermine Mining Services<small>Critical Infrastructure &amp; BESS Stack</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇿🇦</span>South Africa</div></td>
+          <td><span class="co-dir-sector tech">Mining / Tech</span></td>
+          <td class="co-dir-role">JV Partner</td>
+        </tr>
+
+        <!-- RUSSIA -->
+        <tr>
+          <td class="co-dir-idx">08</td>
+          <td><div class="co-dir-name">PhosAgro<small>Russia's Largest Fertilizer Producer · Global Top 5</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector agri">Agri / Chem</span></td>
+          <td class="co-dir-role">Strategic Partner</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">09</td>
+          <td><div class="co-dir-name">Russian Timiryazev State Agrarian University<small>Est. 1865 · Russia's Oldest Agricultural Institution</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector agri">Academia</span></td>
+          <td class="co-dir-role">Academic Partner</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">10</td>
+          <td><div class="co-dir-name">Wildberries<small>Russia's Largest E-Commerce Platform · SADC Expansion</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector commerce">E-Commerce</span></td>
+          <td class="co-dir-role">SADC Arm Deal</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">11</td>
+          <td><div class="co-dir-name">Uvelka<small>Russia's #1 Oat &amp; Grain Producer · Halaal Corridor</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector agri">Food / FMCG</span></td>
+          <td class="co-dir-role">SA Retail Entry</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">12</td>
+          <td><div class="co-dir-name">RusQuality<small>Russian Food Standards &amp; Certification Body</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector gov">Standards / Gov</span></td>
+          <td class="co-dir-role">Certification</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">13</td>
+          <td><div class="co-dir-name">NtechLab<small>AI Facial Recognition · Critical Infrastructure Security</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector tech">AI / Security</span></td>
+          <td class="co-dir-role">JV Partner</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">14</td>
+          <td><div class="co-dir-name">Sevir Cold Chain Logistics<small>AfCFTA Halaal-Grade Pelagic Corridor</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector commerce">Logistics</span></td>
+          <td class="co-dir-role">Cold Chain</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">15</td>
+          <td><div class="co-dir-name">Rosatom<small>State Nuclear Energy Corp · World Youth Festival Partner</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector tech">Energy / Nuclear</span></td>
+          <td class="co-dir-role">Bilateral Tech</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">16</td>
+          <td><div class="co-dir-name">International Boxing Association (IBA)<small>President Umar Kremlev · Mandela African Boxing Cup</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🌍</span>International</div></td>
+          <td><span class="co-dir-sector sport">Sport</span></td>
+          <td class="co-dir-role">Sports Diplomacy</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">17</td>
+          <td><div class="co-dir-name">Sputnik International<small>Russian State Media · Press Coverage</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector media">Media</span></td>
+          <td class="co-dir-role">Press Partner</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">18</td>
+          <td><div class="co-dir-name">RT (Russia Today)<small>International Broadcast · Tumelo RT Interview · Sirius</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector media">Media</span></td>
+          <td class="co-dir-role">Media Partner</td>
+        </tr>
+
+        <!-- UAE -->
+        <tr>
+          <td class="co-dir-idx">19</td>
+          <td><div class="co-dir-name">DMCC — Dubai Multi Commodities Centre<small>World's Largest Free Trade Zone · $100B Annual Trade</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇦🇪</span>UAE</div></td>
+          <td><span class="co-dir-sector finance">Trade / Finance</span></td>
+          <td class="co-dir-role">Global Gateway</td>
+        </tr>
+
+        <!-- INTERNATIONAL -->
+        <tr>
+          <td class="co-dir-idx">20</td>
+          <td><div class="co-dir-name">World Youth Festival<small>Sirius, Southern Russia · Tumelo Featured Speaker</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🌐</span>International</div></td>
+          <td><span class="co-dir-sector gov">Diplomacy</span></td>
+          <td class="co-dir-role">Youth Forum</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">21</td>
+          <td><div class="co-dir-name">Bicomitant Biosecurity<small>AfCFTA Halaal Pelagic Corridor · Food Safety</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🌍</span>International</div></td>
+          <td><span class="co-dir-sector agri">Biosecurity</span></td>
+          <td class="co-dir-role">Compliance</td>
+        </tr>
+        <tr>
+          <td class="co-dir-idx">22</td>
+          <td><div class="co-dir-name">Russian Embassy — South Africa<small>Official Diplomatic Communiqué · Facebook Confirmed</small></div></td>
+          <td><div class="co-dir-country"><span class="co-dir-flag">🇷🇺</span>Russia</div></td>
+          <td><span class="co-dir-sector gov">Diplomacy</span></td>
+          <td class="co-dir-role">Host Nation</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Bottom note -->
+    <div style="margin-top:32px;padding-top:20px;border-top:1px solid rgba(229,226,216,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <p style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.3);margin:0">Additional delegations &amp; companies announced closer to the event. All sectors verified against publicly confirmed relationships.</p>
+      <a href="#register" style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:2px">Register to Attend →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" style="border-color:rgba(229,226,216,0.08)">
 
 <!-- ── PARTNERS ── -->
 <section class="section" id="partners">
