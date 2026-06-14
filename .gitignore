@@ -1,3 +1,6 @@
 *.m4v
 *.mp4
 DEPLOY_FLYIO.md
+images/tradeweek-2026-recap.mov
+images/*.mov
+images/*.mp4

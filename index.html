@@ -580,6 +580,8 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
     <div class="nav-links">
       <a href="#about" class="nav-link">About</a>
       <a href="#vision" class="nav-link">Vision</a>
+      <a href="#tradeweek-recap" class="nav-link">Trade Week Recap</a>
+      <a href="blog.html" class="nav-link">Blog</a>
       <a href="#super-agents" class="nav-link">Super Agents</a>
       <a href="#vm-companies" class="nav-link">VM Companies</a>
       <a href="#partner-afrikabiz" class="nav-link">Afrika Biz</a>
@@ -668,6 +670,198 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
   </div>
 </div>
 
+
+<!-- ── AESTHETICS GLOBAL MARKETS BRAIN SPHERE ── -->
+<section id="brain-sphere" style="background:var(--obsidian);padding:clamp(60px,8vw,100px) 0 clamp(40px,5vw,60px);border-bottom:1px solid rgba(201,168,76,0.1);position:relative;overflow:hidden">
+  <div style="max-width:1100px;margin:0 auto;padding:0 clamp(24px,5vw,60px);text-align:center">
+    
+    <!-- Label -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:16px">Aesthetics Global Markets Technology</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;color:var(--cream);margin-bottom:8px;line-height:1.2">The Global Markets <em style="font-style:italic;color:var(--gold-soft)">Brain</em></h2>
+    <p style="font-family:Inter,sans-serif;font-size:13px;font-weight:300;color:rgba(248,244,232,0.4);letter-spacing:0.06em;margin-bottom:48px">Studex Global Markets Ecosystem Intelligence · 14 Years of Compounding AI</p>
+
+    <!-- Sphere Canvas -->
+    <div style="position:relative;display:inline-block;margin-bottom:40px">
+      <canvas id="brainSphere" width="500" height="500" style="max-width:min(500px,90vw);height:auto;display:block;margin:0 auto"></canvas>
+      
+      <!-- Floating node labels -->
+      <div id="sphere-labels" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none"></div>
+    </div>
+
+    <!-- Sub-label -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(248,244,232,0.2);margin-top:8px">Studex Global Markets Brain · Live Ecosystem View</div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const canvas = document.getElementById('brainSphere');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = 500, H = 500, CX = W/2, CY = H/2, R = 175;
+  let rot = 0, rotY = 0;
+
+  // Node definitions — ecosystem entities
+  const nodes = [
+    { label: 'Studex', theta: 0.3, phi: 0.5, color: '#C9A84C', size: 8, pulse: true },
+    { label: 'NtechLab', theta: 1.1, phi: 1.2, color: '#E5CE7A', size: 5, pulse: false },
+    { label: 'ART Engineering', theta: 2.3, phi: 0.8, color: '#E5CE7A', size: 5, pulse: false },
+    { label: 'Pharmasyntez', theta: 3.5, phi: 1.5, color: '#E5CE7A', size: 5, pulse: false },
+    { label: 'Project Phoenix', theta: 4.8, phi: 0.4, color: '#E5CE7A', size: 5, pulse: false },
+    { label: 'AfricaBiz', theta: 5.6, phi: 1.0, color: '#9A7F32', size: 5, pulse: false },
+    { label: 'Super Agents', theta: 0.9, phi: 2.1, color: '#C9A84C', size: 6, pulse: false },
+    { label: 'Aesthetics AI', theta: 2.0, phi: 0.2, color: '#C9A84C', size: 6, pulse: false },
+    { label: 'SA Market', theta: 3.2, phi: 1.8, color: '#9A7F32', size: 4, pulse: false },
+    { label: 'Russia Bridge', theta: 4.4, phi: 0.6, color: '#9A7F32', size: 4, pulse: false },
+    { label: 'VM 01', theta: 1.7, phi: 1.6, color: '#E5CE7A', size: 3, pulse: false },
+    { label: 'VM 02', theta: 2.9, phi: 0.9, color: '#E5CE7A', size: 3, pulse: false },
+    { label: 'VM 03', theta: 4.1, phi: 1.3, color: '#E5CE7A', size: 3, pulse: false },
+    { label: 'VM 04', theta: 5.3, phi: 0.7, color: '#E5CE7A', size: 3, pulse: false },
+    { label: 'Leonardo', theta: 0.5, phi: 1.4, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+    { label: 'Da Vinci', theta: 1.5, phi: 0.3, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+    { label: 'Raphael', theta: 2.7, phi: 1.1, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+    { label: 'Michelangelo', theta: 3.9, phi: 1.7, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+    { label: 'Botticelli', theta: 5.1, phi: 0.3, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+    { label: 'Bernini', theta: 0.2, phi: 1.9, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+    { label: 'Caravaggio', theta: 1.3, phi: 0.8, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+    { label: 'Titian', theta: 2.5, phi: 1.5, color: 'rgba(201,168,76,0.5)', size: 3, pulse: false },
+  ];
+
+  // Generate surface particles
+  const particles = [];
+  for (let i = 0; i < 220; i++) {
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    particles.push({ theta, phi, size: Math.random() * 1.4 + 0.3, alpha: Math.random() * 0.4 + 0.1 });
+  }
+
+  function project(theta, phi, t, ry) {
+    // Spherical to Cartesian
+    const x0 = R * Math.sin(phi) * Math.cos(theta);
+    const y0 = R * Math.cos(phi);
+    const z0 = R * Math.sin(phi) * Math.sin(theta);
+    // Rotate X axis (slow tilt)
+    const y1 = y0 * Math.cos(0.3) - z0 * Math.sin(0.3);
+    const z1 = y0 * Math.sin(0.3) + z0 * Math.cos(0.3);
+    // Rotate Y axis (spin)
+    const cosT = Math.cos(t + ry);
+    const sinT = Math.sin(t + ry);
+    const x2 = x0 * cosT + z1 * sinT;
+    const z2 = -x0 * sinT + z1 * cosT;
+    const depth = (z2 + R) / (2 * R); // 0..1
+    return { sx: CX + x2, sy: CY + y1, depth, z: z2 };
+  }
+
+  let tick = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    tick++;
+
+    // Background glow
+    const bg = ctx.createRadialGradient(CX, CY, 0, CX, CY, R * 1.3);
+    bg.addColorStop(0, 'rgba(201,168,76,0.04)');
+    bg.addColorStop(0.6, 'rgba(15,15,15,0)');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    const t = tick * 0.004;
+
+    // Compute projected nodes
+    const projNodes = nodes.map(n => {
+      const p = project(n.theta, n.phi, t, 0);
+      return { ...n, ...p };
+    });
+
+    // Draw connections (back-to-front approximate)
+    projNodes.forEach((a, i) => {
+      projNodes.forEach((b, j) => {
+        if (j <= i) return;
+        // Only connect if close in 3D angle
+        const dTheta = Math.abs(a.theta - b.theta);
+        const dPhi = Math.abs(a.phi - b.phi);
+        if (dTheta > 2.0 && dPhi > 1.0) return;
+        if (a.depth < 0.2 || b.depth < 0.2) return;
+        const alpha = Math.min(a.depth, b.depth) * 0.18;
+        ctx.beginPath();
+        ctx.moveTo(a.sx, a.sy);
+        ctx.lineTo(b.sx, b.sy);
+        ctx.strokeStyle = `rgba(201,168,76,${alpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      });
+    });
+
+    // Draw surface particles
+    particles.forEach(p => {
+      const proj = project(p.theta, p.phi, t, 0);
+      if (proj.depth < 0.1) return;
+      const alpha = p.alpha * proj.depth;
+      ctx.beginPath();
+      ctx.arc(proj.sx, proj.sy, p.size * proj.depth, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,168,76,${alpha * 0.6})`;
+      ctx.fill();
+    });
+
+    // Draw nodes
+    projNodes
+      .sort((a, b) => a.depth - b.depth)
+      .forEach(n => {
+        if (n.depth < 0.05) return;
+        const sz = n.size * (0.4 + n.depth * 0.8);
+        const alpha = 0.3 + n.depth * 0.7;
+
+        // Pulse ring for primary nodes
+        if (n.pulse) {
+          const pulseSz = sz + 6 + Math.sin(tick * 0.06) * 4;
+          ctx.beginPath();
+          ctx.arc(n.sx, n.sy, pulseSz, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(201,168,76,${alpha * 0.25})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        // Glow
+        const grd = ctx.createRadialGradient(n.sx, n.sy, 0, n.sx, n.sy, sz * 2.5);
+        grd.addColorStop(0, n.color);
+        grd.addColorStop(1, 'transparent');
+        ctx.beginPath();
+        ctx.arc(n.sx, n.sy, sz * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.globalAlpha = alpha * 0.3;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        // Core dot
+        ctx.beginPath();
+        ctx.arc(n.sx, n.sy, sz, 0, Math.PI * 2);
+        ctx.fillStyle = n.color;
+        ctx.globalAlpha = alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        // Label for larger / front-facing nodes
+        if (n.size >= 5 && n.depth > 0.45) {
+          ctx.font = `${Math.min(10, 8 * n.depth + 3)}px "JetBrains Mono", monospace`;
+          ctx.fillStyle = `rgba(248,244,232,${alpha * 0.75})`;
+          ctx.globalAlpha = 1;
+          ctx.fillText(n.label, n.sx + sz + 4, n.sy + 3);
+        }
+      });
+
+    // Sphere wireframe ring (equator hint)
+    ctx.beginPath();
+    ctx.arc(CX, CY, R, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(201,168,76,0.04)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+</script>
+
 <!-- ── PARTNER LOGO STRIP ── -->
 <div class="partner-strip">
   <div class="partner-strip-label">Organisations &amp; Institutions Involved</div>
@@ -713,6 +907,176 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
   </div>
 </div>
 
+
+<!-- ── EVENT PHOTO STRIP ── -->
+<section id="event-gallery-preview" style="background:var(--obsidian);padding:clamp(60px,7vw,90px) 0;border-top:1px solid rgba(201,168,76,0.12)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,80px)">
+    
+    <!-- Label -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:16px">Trade Week 2026 · Official Photography</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;color:var(--cream);line-height:1.2">Moments from the <em style="font-style:italic;color:var(--gold-soft)">Mission</em></h2>
+      <a href="gallery.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:2px;white-space:nowrap">View All 21 Photos →</a>
+    </div>
+
+    <!-- 6-photo preview grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px">
+      
+      <!-- Big feature left -->
+      <div style="grid-row:span 2;position:relative;overflow:hidden;border-radius:3px">
+        <a href="gallery.html">
+          <img src="images/event/WhatsApp-Image-2026-06-10-at-11.28.23-9.jpg" alt="Tumelo Ramaphosa presenting at Trade Week 2026" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;filter:brightness(0.9)" onmouseover="this.style.transform='scale(1.04)';this.style.filter='brightness(1)'" onmouseout="this.style.transform='scale(1)';this.style.filter='brightness(0.9)'"/>
+        </a>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 18px;background:linear-gradient(transparent,rgba(15,15,15,0.85))">
+          <div style="font-family:Inter,sans-serif;font-size:12px;color:rgba(248,244,232,0.8);font-weight:300">Tumelo Ramaphosa presenting the Aesthetics ecosystem</div>
+        </div>
+      </div>
+
+      <!-- Top right 1 -->
+      <div style="position:relative;overflow:hidden;border-radius:3px">
+        <a href="gallery.html">
+          <img src="images/event/WhatsApp-Image-2026-06-10-at-11.28.19-6.jpg" alt="Jersey exchange at Trade Week" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease;filter:brightness(0.9)" onmouseover="this.style.transform='scale(1.04)';this.style.filter='brightness(1)'" onmouseout="this.style.transform='scale(1)';this.style.filter='brightness(0.9)'"/>
+        </a>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(15,15,15,0.8))">
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.7);font-weight:300">The partnership jersey — personalised for Tumelo</div>
+        </div>
+      </div>
+
+      <!-- Top right 2 -->
+      <div style="position:relative;overflow:hidden;border-radius:3px">
+        <a href="gallery.html">
+          <img src="images/event/WhatsApp-Image-2026-06-10-at-11.28.29-18.jpg" alt="Natalia Mordvinova — AfricaBiz Founder and Director" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease;filter:brightness(0.9)" onmouseover="this.style.transform='scale(1.04)';this.style.filter='brightness(1)'" onmouseout="this.style.transform='scale(1)';this.style.filter='brightness(0.9)'"/>
+        </a>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(15,15,15,0.8))">
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.7);font-weight:300">Natalia Mordvinova · AfricaBiz Founder &amp; Director</div>
+        </div>
+      </div>
+
+      <!-- Bottom right 1 -->
+      <div style="position:relative;overflow:hidden;border-radius:3px">
+        <a href="gallery.html">
+          <img src="images/event/WhatsApp-Image-2026-06-10-at-11.28.26-13.jpg" alt="Four delegates — first cohort — at Trade Week working group" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease;filter:brightness(0.9)" onmouseover="this.style.transform='scale(1.04)';this.style.filter='brightness(1)'" onmouseout="this.style.transform='scale(1)';this.style.filter='brightness(0.9)'"/>
+        </a>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(15,15,15,0.8))">
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.7);font-weight:300">The first cohort — four sector-defining companies</div>
+        </div>
+      </div>
+
+      <!-- Bottom right 2 -->
+      <div style="position:relative;overflow:hidden;border-radius:3px">
+        <a href="gallery.html">
+          <img src="images/event/WhatsApp-Image-2026-06-10-at-11.28.18-5.jpg" alt="Working group session at Four Seasons Westcliff" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease;filter:brightness(0.9)" onmouseover="this.style.transform='scale(1.04)';this.style.filter='brightness(1)'" onmouseout="this.style.transform='scale(1)';this.style.filter='brightness(0.9)'"/>
+        </a>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(15,15,15,0.8))">
+          <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.7);font-weight:300">Working group in full session · Four Seasons Westcliff</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;padding-top:8px">
+      <a href="gallery.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--obsidian);background:var(--gold);padding:14px 36px;border-radius:2px;text-decoration:none;display:inline-block;transition:background 0.2s" onmouseover="this.style.background='#9A7F32'" onmouseout="this.style.background='#C9A84C'">View Full Gallery — All 21 Photos →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TRADE WEEK RECAP VIDEO ── -->
+<section id="tradeweek-recap" style="background:var(--obsidian);padding:clamp(72px,10vw,130px) 0;border-top:1px solid rgba(201,168,76,0.15)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,80px)">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:clamp(40px,6vw,72px)" data-reveal>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:16px">Trade Week 2026 · Johannesburg · A Historic First</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,64px);font-weight:400;color:var(--cream);letter-spacing:-0.025em;line-height:1.1;margin:0 0 20px">The Week That Changed<br><em style="color:var(--gold)">Everything.</em></h2>
+      <p style="font-family:Inter,sans-serif;font-size:15px;color:rgba(248,244,232,0.55);max-width:640px;margin:0 auto;line-height:1.8">From 9 to 11 June 2026, Johannesburg hosted the inaugural SA–Russia Trade Week — a landmark gathering that brought world-class Russian technology companies into the Studex Global Markets virtual agent ecosystem for the first time.</p>
+    </div>
+
+    <!-- Video + AfricaBiz portrait side by side -->
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:clamp(24px,4vw,48px);align-items:start;margin-bottom:clamp(48px,6vw,80px)" data-reveal>
+
+      <!-- Video -->
+      <div style="position:relative">
+        <div style="position:relative;background:#000;overflow:hidden">
+          <video
+            id="tradeweek-video"
+            src="images/tradeweek-2026-recap.mov"
+            poster="images/natalia-mordvinova-portrait.jpg"
+            controls
+            playsinline
+            preload="metadata"
+            style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block"
+          ></video>
+          <!-- Gold overlay play hint removed once video loads -->
+        </div>
+        <div style="padding:20px 0 0">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:8px">Official Recap · Trade Week 2026</div>
+          <p style="font-family:Inter,sans-serif;font-size:13px;color:rgba(248,244,232,0.5);line-height:1.7;margin:0">An extraordinary week of connection, commerce, and vision — four Russian technology companies welcomed into the Studex Global Markets virtual agent cloud. South Africa's most significant bilateral technology trade event.</p>
+        </div>
+      </div>
+
+      <!-- AfricaBiz portrait + bio -->
+      <div>
+        <div style="position:relative;overflow:hidden;margin-bottom:20px">
+          <img src="images/natalia-mordvinova-portrait.jpg" alt="Natalia Mordvinova — Founder & Director, AfricaBiz" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block">
+          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,15,15,0.9));padding:28px 20px 22px">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--cream);line-height:1.2">Natalia Mordvinova</div>
+            <div style="font-family:Inter,sans-serif;font-size:10px;color:rgba(201,168,76,0.85);margin-top:5px;letter-spacing:0.05em">Founder &amp; Director · AfricaBiz (Pty) Ltd</div>
+          </div>
+        </div>
+        <div style="border-left:2px solid rgba(201,168,76,0.3);padding-left:16px">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(248,244,232,0.7);line-height:1.6;margin:0 0 12px">"We didn't just bring companies to South Africa — we built the virtual room they'll operate from, permanently."</p>
+          <p style="font-family:Inter,sans-serif;font-size:12px;color:rgba(248,244,232,0.45);line-height:1.7;margin:0">AfricaBiz (Pty) Ltd co-architected Trade Week 2026 with Studex Global Markets, delivering the first cohort of Russian technology companies into the Studex Aesthetics Agent Cloud ecosystem.</p>
+          <a href="https://africabiz.ru" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:2px">africabiz.ru &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Together photo full-width banner -->
+    <div style="position:relative;overflow:hidden;margin-bottom:clamp(40px,5vw,64px)" data-reveal>
+      <img src="images/tumelo-natalia-afrikabuiz-2.jpg" alt="Tumelo Ramaphosa and Natalia Mordvinova at Trade Week 2026" loading="lazy" style="width:100%;max-height:420px;object-fit:cover;object-position:center 30%;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(15,15,15,0.75) 0%,rgba(15,15,15,0.2) 60%,rgba(15,15,15,0.0) 100%)">
+        <div style="position:absolute;bottom:0;left:0;padding:clamp(20px,4vw,48px)">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(201,168,76,0.8);margin-bottom:10px">Studex × AfricaBiz · The Partnership Behind It All</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,34px);font-weight:400;color:var(--cream);line-height:1.2">Tumelo Ramaphosa &amp; Natalia Mordvinova<br><em style="color:var(--gold);font-size:0.85em">Co-architects of the SA–Russia Business Exchange</em></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What happened: 4 outcome tiles -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(229,226,216,0.08);margin-bottom:clamp(40px,5vw,64px)" data-reveal>
+      <div style="background:rgba(15,15,15,0.6);padding:28px 22px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);line-height:1;margin-bottom:10px">4</div>
+        <div style="font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:var(--cream);margin-bottom:6px">Companies Onboarded</div>
+        <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.4);line-height:1.5">NtechLab · ART Engineering · Pharmasyntez · Project Phoenix — all now live in their dedicated Aesthetics Agent Cloud cloud spaces.</div>
+      </div>
+      <div style="background:rgba(15,15,15,0.6);padding:28px 22px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);line-height:1;margin-bottom:10px">3</div>
+        <div style="font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:var(--cream);margin-bottom:6px">Days of History</div>
+        <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.4);line-height:1.5">Four Seasons Westcliff on 9 June. Sandton Hotel for the Russian Business Mission on 10–11 June.</div>
+      </div>
+      <div style="background:rgba(15,15,15,0.6);padding:28px 22px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);line-height:1;margin-bottom:10px">1st</div>
+        <div style="font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:var(--cream);margin-bottom:6px">Cohort Activated</div>
+        <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.4);line-height:1.5">The inaugural cohort of Russian companies operating inside the Studex Global Markets virtual agent ecosystem.</div>
+      </div>
+      <div style="background:rgba(15,15,15,0.6);padding:28px 22px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);line-height:1;margin-bottom:10px">&infin;</div>
+        <div style="font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:var(--cream);margin-bottom:6px">Synergies Created</div>
+        <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(248,244,232,0.4);line-height:1.5">AI · Telecoms · Pharma · Agri-genetics — four sectors now connected to Africa's most sophisticated business exchange programme.</div>
+      </div>
+    </div>
+
+    <!-- Blog CTA -->
+    <div style="text-align:center" data-reveal>
+      <div style="font-family:Inter,sans-serif;font-size:13px;color:rgba(248,244,232,0.45);margin-bottom:16px">Read the full story of what happened during Trade Week 2026</div>
+      <a href="blog.html" style="display:inline-block;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--obsidian);background:var(--gold);padding:14px 32px;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='var(--gold-deep)'" onmouseout="this.style.background='var(--gold)'">Read the Trade Week Blog &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── ABOUT ── -->
 <section class="section" id="about">
   <div class="container">
@@ -720,7 +1084,7 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
       <div class="about-text" data-reveal>
         <div class="sec-eyebrow">About Trade Week 2026</div>
         <h2 class="sec-title">AI Builds Your Business.<br><em>Four Companies. One Ecosystem.</em></h2>
-        <p>On 9 June 2026, at the Four Seasons Westcliff Johannesburg, Studex Global Markets hosted Trade Week 2026 — the event that onboarded four world-class Russian companies into the Studex Super Agents agentic ecosystem. Each company received their own dedicated NestVM: a private virtual machine where AI agents and humans work together to build, run, and grow their South African presence.</p>
+        <p>On 9 June 2026, at the Four Seasons Westcliff Johannesburg, Studex Global Markets hosted Trade Week 2026 — the event that onboarded four world-class Russian companies into the Studex Super Agents agentic ecosystem. Each company received their own dedicated Aesthetics Agent Cloud: a private virtual machine where AI agents and humans work together to build, run, and grow their South African presence.</p>
         <p>This is not a conference. It is a live proof of concept. The Studex Super Agents ecosystem is now open to the global market — and these four companies are the testament: if AI can build their business in Africa, it can build yours anywhere.</p>
         <p>The philosophy driving it all: <em>"Where human intelligence and artificial intelligence blur — weaponising the best attributes of both into the ultimate business solution."</em></p>
         <div class="stat-row">
@@ -828,8 +1192,8 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
         </div>
         <div class="davos-pillar">
           <div class="davos-pillar-icon">🖥️</div>
-          <div class="davos-pillar-title">NestVM: Your Dedicated Intelligence</div>
-          <div class="davos-pillar-desc">Every partner company receives a private NestVM — a fully isolated virtual machine where their agents live, learn from every interaction, and compound in value over time. Your AI team, yours alone.</div>
+          <div class="davos-pillar-title">Aesthetics Agent Cloud: Your Dedicated Intelligence</div>
+          <div class="davos-pillar-desc">Every partner company receives a private Aesthetics Agent Cloud — a fully isolated virtual machine where their agents live, learn from every interaction, and compound in value over time. Your AI team, yours alone.</div>
         </div>
         <div class="davos-pillar">
           <div class="davos-pillar-icon">🌍</div>
@@ -1114,9 +1478,9 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
       </div>
       <div class="topic-card" data-reveal data-delay="1">
         <div class="topic-icon">🧠</div>
-        <div class="topic-title">NestVM: Private AI Infrastructure</div>
-        <div class="topic-desc">Each Studex ecosystem partner receives a dedicated NestVM — a private virtual machine housing their agents. Powered by Polsia's autonomous AI infrastructure, agents plan, code, market, and operate independently.</div>
-        <div class="topic-chair"><strong>Infrastructure by:</strong> Polsia · polsia.com</div>
+        <div class="topic-title">Aesthetics Agent Cloud: Private AI Infrastructure</div>
+        <div class="topic-desc">Each Studex ecosystem partner receives a dedicated Aesthetics Agent Cloud — a private virtual machine housing their agents. Powered by Aesthetics Global Markets Technology infrastructure, agents plan, code, market, and operate independently.</div>
+        <div class="topic-chair"><strong>Infrastructure by:</strong> Aesthetics Global Markets Technology · studexglobalmarkets.com</div>
       </div>
       <div class="topic-card" data-reveal data-delay="2">
         <div class="topic-icon">👁️</div>
@@ -1145,7 +1509,7 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
       <div class="topic-card" data-reveal>
         <div class="topic-icon">🌍</div>
         <div class="topic-title">Russia-Africa Business Corridors</div>
-        <div class="topic-desc">How Afrika Biz — led by Natalia Mordvinova — operates as the corridor between Russian technology companies and African market entry. The anatomy of a bilateral deal from introduction to NestVM deployment.</div>
+        <div class="topic-desc">How Afrika Biz — led by Natalia Mordvinova — operates as the corridor between Russian technology companies and African market entry. The anatomy of a bilateral deal from introduction to Aesthetics Agent Cloud deployment.</div>
         <div class="topic-chair"><strong>Facilitated by:</strong> Afrika Biz · Natalia Mordvinova</div>
       </div>
       <div class="topic-card" data-reveal data-delay="1">
@@ -2408,12 +2772,12 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
       </div>
     </div>
 
-    <!-- NestVM Sub-section -->
+    <!-- Aesthetics Agent Cloud Sub-section -->
     <div style="background:rgba(229,226,216,0.03);border:1px solid rgba(229,226,216,0.1);border-left:3px solid var(--gold);padding:40px 40px" data-reveal>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:14px">NestVM · Powered by Polsia</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:14px">Aesthetics Agent Cloud · Powered by Aesthetics Global Markets Technology</div>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,36px);font-weight:400;color:var(--cream);letter-spacing:-0.02em;line-height:1.1;margin:0 0 18px">Your Agent Lives<br><em style="color:var(--gold)">In Its Own Private Machine.</em></h3>
-      <p style="font-family:Inter,sans-serif;font-size:14px;color:rgba(248,244,232,0.55);max-width:680px;line-height:1.8;margin:0 0 20px">Each partner company in the Studex ecosystem receives a dedicated NestVM — a private virtual machine where their AI agents live, learn, and work. Powered by Polsia's autonomous AI infrastructure, each VM is a fully isolated intelligence environment: agents that plan, code, market, and operate the company's South African presence 24 hours a day, 7 days a week.</p>
-      <a href="https://polsia.com/dashboard/nestvm" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.35);padding-bottom:2px">Explore NestVM Infrastructure → polsia.com</a>
+      <p style="font-family:Inter,sans-serif;font-size:14px;color:rgba(248,244,232,0.55);max-width:680px;line-height:1.8;margin:0 0 20px">Each partner company in the Studex ecosystem receives a dedicated Aesthetics Agent Cloud — a private virtual machine where their AI agents live, learn, and work. Powered by Aesthetics Global Markets Technology infrastructure, each VM is a fully isolated intelligence environment: agents that plan, code, market, and operate the company's South African presence 24 hours a day, 7 days a week.</p>
+      <a href="https://studexglobalmarkets.com" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.35);padding-bottom:2px">Explore Aesthetics Agent Cloud Infrastructure → studexglobalmarkets.com</a>
     </div>
 
     <!-- CTA -->
@@ -2432,7 +2796,7 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
     <div style="margin-bottom:clamp(48px,6vw,72px)" data-reveal>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:14px">Trade Week 2026 · Four Ecosystem Companies</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,60px);font-weight:400;color:var(--cream);letter-spacing:-0.025em;line-height:1;margin:0 0 20px">World-Class Partners.<br><em style="color:var(--gold)">One South African Ecosystem.</em></h2>
-      <p style="font-family:Inter,sans-serif;font-size:15px;color:rgba(248,244,232,0.6);max-width:640px;line-height:1.7;margin:0">Four Russian companies — representing AI, industrial engineering, biotechnology, and conservation — onboarded to the Studex ecosystem at Trade Week 2026. Each receives a dedicated NestVM, a Super Agent, and a managed SA market entry programme.</p>
+      <p style="font-family:Inter,sans-serif;font-size:15px;color:rgba(248,244,232,0.6);max-width:640px;line-height:1.7;margin:0">Four Russian companies — representing AI, industrial engineering, biotechnology, and conservation — onboarded to the Studex ecosystem at Trade Week 2026. Each receives a dedicated Aesthetics Agent Cloud, a Super Agent, and a managed SA market entry programme.</p>
     </div>
 
     <!-- 2x2 Grid -->
@@ -2661,7 +3025,7 @@ footer{background:var(--obsidian);color:var(--cream);padding:64px 40px 36px}
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,38px);font-weight:400;color:var(--obsidian);letter-spacing:-0.02em;line-height:1.15;margin:0 0 20px">An Architect of Commerce,<br><em style="color:var(--gold-deep)">Not an Intermediary.</em></h3>
         <p style="font-family:Inter,sans-serif;font-size:14px;color:rgba(15,15,15,0.65);line-height:1.85;margin:0 0 18px">Natalia Mordvinova, Founder &amp; Director of AfricaBiz (Pty) Ltd, has spent years building a living bridge between Russia and the African continent. Her company — rooted in the principle of "Connecting New Horizons" — exists to create strategic business pathways where none existed before.</p>
         <p style="font-family:Inter,sans-serif;font-size:14px;color:rgba(15,15,15,0.65);line-height:1.85;margin:0 0 18px">Together, AfricaBiz and Studex Global Markets designed and activated South Africa's first cohort of Russian technology companies entering the Studex Global Markets virtual space — a milestone programme under the SA–Russia Business Exchange that creates real synergies across AI, biotech, telecoms, and agri-genetics.</p>
-        <p style="font-family:Inter,sans-serif;font-size:14px;color:rgba(15,15,15,0.65);line-height:1.85;margin:0 0 24px">Through this exchange programme, these four pioneering companies became the founding members of the Studex Super Agents ecosystem — operating their own dedicated NestVM environments, onboarded into the virtual workspace, and positioned as proof that business between South Africa and Russia can be intelligent, structured, and unstoppable.</p>
+        <p style="font-family:Inter,sans-serif;font-size:14px;color:rgba(15,15,15,0.65);line-height:1.85;margin:0 0 24px">Through this exchange programme, these four pioneering companies became the founding members of the Studex Super Agents ecosystem — operating their own dedicated Aesthetics Agent Cloud environments, onboarded into the virtual workspace, and positioned as proof that business between South Africa and Russia can be intelligent, structured, and unstoppable.</p>
         <div style="background:rgba(201,168,76,0.08);border-left:3px solid var(--gold);padding:18px 20px;margin-bottom:24px">
           <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--obsidian);line-height:1.55;margin:0">"We didn't just bring companies to a room — we built the room itself. A virtual space where Russia and South Africa can meet, transact, and grow together for the long term."</p>
           <div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(15,15,15,0.45);margin-top:10px">— Natalia Mordvinova · AfricaBiz (Pty) Ltd</div>
