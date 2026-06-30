@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Founder's Vision — Tumelo Ramaphosa | Studex Global Markets</title>
+  <meta name="description" content="Tumelo Ramaphosa — Founder of Studex Global Markets. The philosophy, the decade of building, and the Interconnected Cognitive Virtual Machine System reshaping African trade."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream:#F8F4E8; --obsidian:#0F0F0F; --gold:#C9A84C;
+      --gold-deep:#9A7F32; --gold-soft:#E5CE7A; --hairline:#E5E2D8;
+      --slate:#4A4A4A;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--obsidian);color:var(--cream);font-family:Inter,sans-serif;overflow-x:hidden}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,15,15,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,0.12);padding:18px clamp(24px,5vw,60px);display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-link{font-family:Inter,sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(248,244,232,0.5);text-decoration:none;transition:color 0.2s}
+    .nav-link:hover,.nav-link.active{color:var(--gold)}
+    .nav-cta{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--obsidian);background:var(--gold);padding:10px 24px;text-decoration:none;transition:background 0.2s;border-radius:1px}
+    .nav-cta:hover{background:var(--gold-deep)}
+
+    /* ── HERO ── */
+    .founder-hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px clamp(24px,5vw,80px) 80px}
+    .founder-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 60% 50%,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none}
+    .founder-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+    .founder-hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    @media(max-width:800px){.founder-hero-inner{grid-template-columns:1fr;gap:40px}}
+    .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);opacity:0.75;margin-bottom:20px}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,88px);font-weight:300;line-height:1.0;color:var(--cream);margin-bottom:24px}
+    .hero-title em{font-style:italic;color:var(--gold-soft);display:block}
+    .hero-lead{font-size:17px;font-weight:300;line-height:1.75;color:rgba(248,244,232,0.6);margin-bottom:40px;max-width:460px}
+    .hero-quote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:300;color:rgba(248,244,232,0.4);line-height:1.6;border-left:2px solid rgba(201,168,76,0.3);padding-left:24px;margin-top:32px}
+    .hero-photo-frame{position:relative}
+    .hero-photo-frame img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:2px;filter:brightness(0.88) contrast(1.05)}
+    .hero-photo-badge{position:absolute;bottom:20px;left:20px;right:20px;background:rgba(15,15,15,0.88);backdrop-filter:blur(8px);border:1px solid rgba(201,168,76,0.2);padding:16px 20px;border-radius:2px}
+    .hero-badge-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:4px}
+    .hero-badge-title{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);opacity:0.8}
+
+    /* ── SECTION BASE ── */
+    .section{padding:clamp(80px,10vw,130px) clamp(24px,5vw,80px)}
+    .container{max-width:1100px;margin:0 auto}
+    .section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:16px}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,58px);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:24px}
+    .section-title em{font-style:italic;color:var(--gold-soft)}
+    .section-body{font-size:16px;font-weight:300;line-height:1.8;color:rgba(248,244,232,0.6);max-width:700px}
+    .divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:40px 0}
+
+    /* ── PHILOSOPHY ── */
+    .philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px}
+    @media(max-width:800px){.philosophy-grid{grid-template-columns:1fr}}
+    .philosophy-block p{font-size:16px;font-weight:300;line-height:1.85;color:rgba(248,244,232,0.62);margin-bottom:20px}
+    .philosophy-block p:first-child{font-size:18px;color:rgba(248,244,232,0.75)}
+
+    /* ── PLATFORM OVERVIEW ── */
+    .platform-overview{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:3px;padding:clamp(40px,5vw,70px);margin-top:60px}
+    .platform-overview h3{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;color:var(--cream);margin-bottom:20px;line-height:1.2}
+    .platform-overview h3 em{font-style:italic;color:var(--gold-soft)}
+    .platform-overview p{font-size:15px;font-weight:300;line-height:1.85;color:rgba(248,244,232,0.58);margin-bottom:16px}
+
+    /* ── TIMELINE ── */
+    .timeline{margin-top:60px;position:relative;padding-left:32px}
+    .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,0.1))}
+    .timeline-item{position:relative;margin-bottom:48px}
+    .timeline-item::before{content:'';position:absolute;left:-28px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(201,168,76,0.4)}
+    .timeline-year{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.25em;color:var(--gold);margin-bottom:8px}
+    .timeline-event{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:6px;line-height:1.3}
+    .timeline-detail{font-size:14px;font-weight:300;line-height:1.7;color:rgba(248,244,232,0.5)}
+
+    /* ── VISION CARDS ── */
+    .vision-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+    @media(max-width:900px){.vision-cards{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.vision-cards{grid-template-columns:1fr}}
+    .vision-card{background:rgba(248,244,232,0.03);border:1px solid rgba(201,168,76,0.12);padding:36px 28px;border-radius:2px;transition:border-color 0.3s,background 0.3s}
+    .vision-card:hover{border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.05)}
+    .vision-card-icon{font-size:28px;margin-bottom:16px}
+    .vision-card-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--cream);margin-bottom:12px;line-height:1.2}
+    .vision-card-body{font-size:13px;font-weight:300;line-height:1.75;color:rgba(248,244,232,0.5)}
+
+    /* ── PRESS ── */
+    .press-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+    .press-pill{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,244,232,0.55);background:rgba(248,244,232,0.05);border:1px solid rgba(248,244,232,0.1);padding:10px 18px;border-radius:1px;text-decoration:none;transition:all 0.2s}
+    .press-pill:hover{color:var(--gold);border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.06)}
+
+    /* ── CTA STRIP ── */
+    .cta-strip{background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,rgba(201,168,76,0.02) 100%);border-top:1px solid rgba(201,168,76,0.15);border-bottom:1px solid rgba(201,168,76,0.15);padding:clamp(60px,8vw,100px) clamp(24px,5vw,80px);text-align:center}
+    .cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,56px);font-weight:300;color:var(--cream);margin-bottom:20px;line-height:1.2}
+    .cta-strip h2 em{font-style:italic;color:var(--gold-soft)}
+    .cta-strip p{font-size:16px;font-weight:300;color:rgba(248,244,232,0.5);margin-bottom:40px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.75}
+    .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .btn-gold{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--obsidian);background:var(--gold);padding:16px 40px;text-decoration:none;border-radius:1px;transition:background 0.2s}
+    .btn-gold:hover{background:var(--gold-deep)}
+    .btn-outline{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,0.4);padding:16px 40px;text-decoration:none;border-radius:1px;transition:all 0.2s}
+    .btn-outline:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+
+    /* ── FOOTER ── */
+    footer{padding:50px clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(248,244,232,0.06);text-align:center}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:rgba(248,244,232,0.4);letter-spacing:0.08em;margin-bottom:10px}
+    .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,244,232,0.18)}
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">Studex Global Markets</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="platform.html" class="nav-link">Platform</a>
+    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="index.html#register" class="nav-cta">Join the Ecosystem →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="founder-hero">
+  <div class="founder-hero-bg"></div>
+  <div class="founder-hero-grid"></div>
+  <div class="founder-hero-inner">
+    <div>
+      <div class="hero-eyebrow">Founder · Studex Global Markets</div>
+      <h1 class="hero-title">
+        Tumelo<br>
+        <em>Ramaphosa</em>
+      </h1>
+      <p class="hero-lead">Ten years of building in silence. One ecosystem built to change how Africa trades with the world — not through politics, but through intelligence, technology, and the relentless belief that Africa's best is yet to come.</p>
+      <div class="hero-quote">"The wealth taken from Africa will be returned intellectually — by young, hardworking, ambitious people who know their worth and refuse to settle for less than the future they deserve."</div>
+    </div>
+    <div class="hero-photo-frame">
+      <img src="images/tumelo-sputnik.webp" alt="Tumelo Ramaphosa — Founder, Studex Global Markets"/>
+      <div class="hero-photo-badge">
+        <div class="hero-badge-name">Tumelo Ramaphosa</div>
+        <div class="hero-badge-title">Founder · Studex Global Markets · Aesthetics Global Markets Technology</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PHILOSOPHY ── -->
+<section class="section" style="background:var(--obsidian);border-top:1px solid rgba(201,168,76,0.1)">
+  <div class="container">
+    <div class="section-eyebrow">The Foundation</div>
+    <h2 class="section-title">A Decade of <em>Quiet Building</em></h2>
+    <div class="divider"></div>
+    <div class="philosophy-grid">
+      <div class="philosophy-block">
+        <p>Studex Global Markets was not built overnight. It was built across ten years of failed experiments, early-morning code sessions, and a stubborn refusal to accept that Africa had to wait for the rest of the world to invite it to the table.</p>
+        <p>From the streets of San Francisco in 2010 — where Tumelo first encountered blockchain and AI infrastructure — to boardrooms in Moscow, Johannesburg, and Sandton in 2026, the vision has never wavered: create the intelligent infrastructure that makes African market entry not just possible, but inevitable for the world's best companies.</p>
+        <p>Studex is registered as an aesthetics company — Aesthetics Global Markets Technology. This is intentional. Beauty is precision. Beauty is function elevated to art. Every system we build must be beautiful to use, beautiful to operate, and beautiful in its outcomes for the humans it serves.</p>
+      </div>
+      <div class="philosophy-block">
+        <p>The last 10 years have been spent building different company structures around the Studex ecosystem — but fundamentally, always with the original co-founders and partners. Every iteration taught us something. Every pivot refined the thesis.</p>
+        <p>What emerged is the Interconnected Cognitive Virtual Machine System — ICVMS. A platform where companies don't just use AI tools. They inhabit an AI-powered business environment where agents execute their goals, learn from their strategies, and compound their capabilities over time.</p>
+        <p>The most wonderful moment is now. It is exhilarating, humbling, and deeply purposeful. Thinking of Yuval Noah Harari and how he writes about the arc of human civilization — we are making quantum leaps. But we have to make them together, and we have to make sure Africa is at the centre of that leap.</p>
+        <blockquote style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:rgba(248,244,232,0.45);border-left:2px solid rgba(201,168,76,0.25);padding-left:22px;margin-top:24px;line-height:1.65">"Only trade can keep it going. And let the money flow."</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PLATFORM OVERVIEW ── -->
+<section class="section" style="background:rgba(201,168,76,0.02);border-top:1px solid rgba(201,168,76,0.1)">
+  <div class="container">
+    <div class="section-eyebrow">The Platform</div>
+    <h2 class="section-title">Studex Global Markets <em>ICVMS</em></h2>
+    <p class="section-body">The Interconnected Cognitive Virtual Machine System is a new category of business infrastructure — one where each company operates its own intelligent Virtual Machine, and together, those machines collaborate to build something greater than any one of them could alone.</p>
+    <div class="platform-overview">
+      <h3>Each company gets its own <em>Virtual Machine</em></h3>
+      <p>Think of it as a business in a box. Your company's Virtual Machine (VM) is a dedicated, private AI-powered environment where Super Agents execute your business operations and goals. The agents have full access to the machine — with human approvals and oversight at every critical step. You remain in control. The agents do the work.</p>
+      <p>What makes ICVMS different is the interconnection layer. Your VM doesn't just run in isolation. It participates in co-collaborative working groups with other VMs in the ecosystem. Together, companies can build joint strategies, share intelligence, and create new Virtual Machines to tackle specific market opportunities — while maintaining full autonomy over their own operations.</p>
+      <p>Studex sits at the top of this architecture — as the ecosystem orchestrator, the connective tissue, and the intelligence layer that ensures every VM is running at its highest potential. We don't compete with our partners. We amplify them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section class="section" style="background:var(--obsidian);border-top:1px solid rgba(248,244,232,0.05)">
+  <div class="container">
+    <div class="section-eyebrow">Origin Story</div>
+    <h2 class="section-title">The <em>Journey</em> Here</h2>
+    <p class="section-body">Built across a decade, across continents, across industries. This is how Studex became what it is today.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2010</div>
+        <div class="timeline-event">San Francisco — First Contact with AI & Blockchain</div>
+        <div class="timeline-detail">Tumelo encounters early blockchain infrastructure and AI architecture in Silicon Valley. The seeds of a platform-first thinking are planted.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2014–2019</div>
+        <div class="timeline-event">Studex Aesthetics — The Foundation Company</div>
+        <div class="timeline-detail">Studex is registered as an aesthetics company in South Africa. The original co-founders and partners build early versions of the ecosystem framework — multiple structures tested, all pointing toward the same thesis.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-event">Forbes Africa — Blockchain Africa Rising</div>
+        <div class="timeline-detail">Tumelo is featured in Forbes for his work at the intersection of technology and African economic development. The narrative begins to take public form.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023–2025</div>
+        <div class="timeline-event">Russia Partnership Corridor Opens</div>
+        <div class="timeline-detail">Through AfricaBiz and Natalia Mordvinova, the SA–Russia business corridor is established. Four world-class Russian companies — NtechLab, ART Engineering MDC, Pharmasyntez, and Project Phoenix / GRM — are identified as the founding cohort.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-event">Super Agents — 8 Renaissance AI Agents Launched</div>
+        <div class="timeline-detail">Eight AI Super Agents — named after Renaissance masters — are built and deployed. Each specializes in a domain of business intelligence. The ICVMS architecture is formalized.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">June 2026</div>
+        <div class="timeline-event">SA–Russia Trade Week 2026 — The First Cohort Commits</div>
+        <div class="timeline-detail">Four Seasons Westcliff and Sandton Hotel, Johannesburg. All four partner companies formally join the Studex Global Markets ecosystem. The most significant moment in the company's history — ten years in the making.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Now → ∞</div>
+        <div class="timeline-event">The Ecosystem Goes Live</div>
+        <div class="timeline-detail">ICVMS activates. Virtual Machines are deployed. Working groups form. The open application goes live. Africa's most ambitious AI-powered trade ecosystem begins its first chapter.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VISION CARDS ── -->
+<section class="section" style="background:rgba(201,168,76,0.02);border-top:1px solid rgba(201,168,76,0.08)">
+  <div class="container">
+    <div class="section-eyebrow">What We Stand For</div>
+    <h2 class="section-title">The <em>Values</em> of the Ecosystem</h2>
+    <div class="vision-cards">
+      <div class="vision-card">
+        <div class="vision-card-icon">🌍</div>
+        <div class="vision-card-title">Africa-First by Design</div>
+        <div class="vision-card-body">Every decision, every partnership, every strategy is measured against one question: does this create real, lasting opportunity for young Africans? Not as a slogan — as a selection criterion.</div>
+      </div>
+      <div class="vision-card">
+        <div class="vision-card-icon">⚡</div>
+        <div class="vision-card-title">Agents as Amplifiers</div>
+        <div class="vision-card-body">AI agents don't replace human ambition — they amplify it. Every Super Agent in our ecosystem exists to give a human being a decade more leverage in the same working hour.</div>
+      </div>
+      <div class="vision-card">
+        <div class="vision-card-icon">🔗</div>
+        <div class="vision-card-title">Trade as Connection</div>
+        <div class="vision-card-body">Trade is not just economic activity. It is the original social network — the system that has kept civilizations alive, connected, and creative since the beginning of recorded time.</div>
+      </div>
+      <div class="vision-card">
+        <div class="vision-card-icon">♀️</div>
+        <div class="vision-card-title">Radical Inclusion</div>
+        <div class="vision-card-body">Women. Disabled individuals. Young people with no network and all the talent in the world. The ecosystem is designed to be the equalizer — a meritocracy powered by intelligence, not inheritance.</div>
+      </div>
+      <div class="vision-card">
+        <div class="vision-card-icon">🧬</div>
+        <div class="vision-card-title">Open, Not Closed</div>
+        <div class="vision-card-body">The ecosystem is open for application. Configure your agents. Apply with your company. If you are compatible and the system accepts you — you are in. No gatekeeping beyond capability.</div>
+      </div>
+      <div class="vision-card">
+        <div class="vision-card-icon">📅</div>
+        <div class="vision-card-title">The Friday Ritual</div>
+        <div class="vision-card-body">Every Friday, the ecosystem comes together online. Report. Reflect. Build. COVID showed us that the internet is not a compromise — it is an empowerment. We use it to stay together across continents.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRESS ── -->
+<section class="section" style="background:var(--obsidian);border-top:1px solid rgba(248,244,232,0.05)">
+  <div class="container">
+    <div class="section-eyebrow">Press & Media</div>
+    <h2 class="section-title">Tumelo in the <em>World</em></h2>
+    <p class="section-body">Recognized globally for work at the intersection of technology, trade, and African development.</p>
+    <div class="press-pills">
+      <a class="press-pill" href="https://en.sputniknews.africa/20250424/ramaphosas-son-sees-trade-as-key-to-future-russia-africa-relations-1072272348.html" target="_blank" rel="noopener">Sputnik Africa — Russia–Africa Trade</a>
+      <a class="press-pill" href="https://www.rt.com/russia/593801-rumelo-ramaphos-rt-interview/" target="_blank" rel="noopener">RT — Trade & Future Relations</a>
+      <a class="press-pill" href="https://www.citizen.co.za/news/south-africa/entering-a-different-digital-world-with-tumelo-ramaphosa/" target="_blank" rel="noopener">The Citizen — Digital World</a>
+      <a class="press-pill" href="https://www.forbes.com/sites/tatianakoffman/2019/04/04/blockchain-africa-rising/" target="_blank" rel="noopener">Forbes — Blockchain Africa Rising</a>
+      <a class="press-pill" href="https://www.snl24.com/dailysun/celebs/the-youngest-son-of-president-cyril-ramaphosa-tumelo-talks-about-his-life-20240409" target="_blank" rel="noopener">Daily Sun — Life & Vision</a>
+      <a class="press-pill" href="https://www.bona.co.za/entertainment/tumelo-ramaphosa-encourages-cassper-to-fight-in-a-boxing-match/" target="_blank" rel="noopener">Bona Magazine</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-strip">
+  <h2>Ready to Join the <em>Ecosystem</em>?</h2>
+  <p>The Studex Global Markets Virtual Machine ecosystem is open for applications. Configure your agents. Submit your company. Build your future in Africa.</p>
+  <div class="cta-buttons">
+    <a href="platform.html" class="btn-gold">Explore the Platform →</a>
+    <a href="index.html#register" class="btn-outline">Apply for a Virtual Machine →</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Studex Global Markets</div>
+  <div class="footer-copy">© 2026 Aesthetics Global Markets Technology · All Rights Reserved · hello@studexglobalmarkets.com</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>The Platform — ICVMS | Studex Global Markets</title>
+  <meta name="description" content="Studex Global Markets Interconnected Cognitive Virtual Machine System. Five founding Virtual Machines. One ecosystem. Open for application."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream:#F8F4E8; --obsidian:#0F0F0F; --gold:#C9A84C;
+      --gold-deep:#9A7F32; --gold-soft:#E5CE7A; --hairline:#E5E2D8;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--obsidian);color:var(--cream);font-family:Inter,sans-serif;overflow-x:hidden}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,15,15,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,0.12);padding:18px clamp(24px,5vw,60px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .nav-logo{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;flex-shrink:0}
+    .nav-links{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+    .nav-link{font-family:Inter,sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(248,244,232,0.5);text-decoration:none;transition:color 0.2s;white-space:nowrap}
+    .nav-link:hover,.nav-link.active{color:var(--gold)}
+    .nav-cta{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--obsidian);background:var(--gold);padding:10px 22px;text-decoration:none;transition:background 0.2s;border-radius:1px;white-space:nowrap}
+    .nav-cta:hover{background:var(--gold-deep)}
+
+    /* ── HERO ── */
+    .platform-hero{padding:clamp(120px,15vw,170px) clamp(24px,5vw,80px) clamp(80px,10vw,120px);text-align:center;position:relative;overflow:hidden}
+    .platform-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none}
+    .platform-hero-inner{max-width:900px;margin:0 auto;position:relative}
+    .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.42em;text-transform:uppercase;color:var(--gold);opacity:0.75;margin-bottom:20px}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,96px);font-weight:300;line-height:1.0;color:var(--cream);margin-bottom:24px}
+    .hero-title em{font-style:italic;color:var(--gold-soft)}
+    .hero-sub{font-size:18px;font-weight:300;line-height:1.75;color:rgba(248,244,232,0.55);max-width:640px;margin:0 auto 48px}
+    .hero-stats{display:flex;gap:0;justify-content:center;border:1px solid rgba(201,168,76,0.15);border-radius:2px;overflow:hidden;max-width:600px;margin:0 auto}
+    .hero-stat{flex:1;padding:24px 20px;text-align:center;border-right:1px solid rgba(201,168,76,0.12)}
+    .hero-stat:last-child{border-right:none}
+    .hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold);line-height:1}
+    .hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(248,244,232,0.3);margin-top:6px}
+
+    /* ── SECTIONS ── */
+    .section{padding:clamp(80px,10vw,130px) clamp(24px,5vw,80px)}
+    .container{max-width:1140px;margin:0 auto}
+    .section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:16px}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,58px);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:20px}
+    .section-title em{font-style:italic;color:var(--gold-soft)}
+    .section-body{font-size:16px;font-weight:300;line-height:1.8;color:rgba(248,244,232,0.58);max-width:700px}
+    .divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:32px 0}
+
+    /* ══════════════════════════════════════════
+       ICVMS DIAGRAM
+    ══════════════════════════════════════════ */
+    .diagram-wrap{margin-top:70px;position:relative;padding:40px 20px}
+
+    /* SVG connection lines */
+    .diagram-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+    /* Node rows */
+    .diagram-row-top{display:flex;justify-content:center;margin-bottom:0;position:relative;z-index:1}
+    .diagram-row-mid{display:flex;justify-content:center;margin-top:70px;position:relative;z-index:1}
+    .diagram-row-bottom{display:flex;justify-content:center;gap:clamp(16px,3vw,40px);margin-top:70px;position:relative;z-index:1;flex-wrap:wrap}
+
+    /* Computer node */
+    .vm-node{display:flex;flex-direction:column;align-items:center;gap:0;width:clamp(130px,14vw,170px)}
+    .vm-node.hub{width:clamp(160px,16vw,200px)}
+
+    .vm-screen{
+      width:100%;
+      aspect-ratio:4/3;
+      background:rgba(15,15,15,0.95);
+      border:2px solid rgba(201,168,76,0.35);
+      border-radius:6px 6px 2px 2px;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      padding:16px 12px 14px;
+      position:relative;
+      transition:border-color 0.3s,box-shadow 0.3s;
+      box-shadow:0 0 0 rgba(201,168,76,0);
+    }
+    .vm-node.hub .vm-screen{border-color:var(--gold);box-shadow:0 0 30px rgba(201,168,76,0.15),0 0 60px rgba(201,168,76,0.05)}
+    .vm-screen:hover{border-color:var(--gold);box-shadow:0 0 24px rgba(201,168,76,0.2)}
+
+    /* Screen scanline effect */
+    .vm-screen::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(201,168,76,0.015) 2px,rgba(201,168,76,0.015) 4px);border-radius:4px 4px 0 0;pointer-events:none}
+
+    /* Screen glow dot (power) */
+    .vm-screen::after{content:'';position:absolute;top:8px;right:10px;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:0.6;box-shadow:0 0 6px var(--gold)}
+    .vm-node.hub .vm-screen::after{opacity:1;box-shadow:0 0 10px var(--gold),0 0 20px rgba(201,168,76,0.4)}
+
+    .vm-logo{width:clamp(44px,5vw,60px);height:clamp(44px,5vw,60px);border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,0.08);border:1.5px solid rgba(201,168,76,0.25);flex-shrink:0;margin-bottom:10px}
+    .vm-logo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .vm-logo-text{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--gold);line-height:1}
+    .vm-node.hub .vm-logo{width:clamp(56px,6vw,72px);height:clamp(56px,6vw,72px);border-color:var(--gold)}
+
+    .vm-name{font-family:'JetBrains Mono',monospace;font-size:clamp(7px,0.9vw,9px);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream);text-align:center;line-height:1.3;opacity:0.85}
+    .vm-node.hub .vm-name{font-size:clamp(8px,1vw,11px);opacity:1;color:var(--gold)}
+    .vm-vm-id{font-family:'JetBrains Mono',monospace;font-size:clamp(6px,0.7vw,8px);font-weight:700;letter-spacing:0.15em;color:rgba(201,168,76,0.5);margin-top:4px}
+
+    /* Monitor stand */
+    .vm-stand-neck{width:24%;height:16px;background:rgba(201,168,76,0.15);margin:0 auto;clip-path:polygon(20% 0,80% 0,100% 100%,0% 100%)}
+    .vm-stand-base{width:70%;height:8px;background:rgba(201,168,76,0.2);border-radius:0 0 4px 4px;margin:0 auto}
+    .vm-label{font-family:Inter,sans-serif;font-size:clamp(11px,1.2vw,13px);font-weight:300;color:rgba(248,244,232,0.45);text-align:center;margin-top:12px;line-height:1.4;max-width:140px}
+
+    /* Connector dots on screen edge */
+    .vm-port{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:rgba(201,168,76,0.4);border:1.5px solid rgba(201,168,76,0.6)}
+
+    /* ── HOW IT WORKS ── */
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px}
+    @media(max-width:800px){.how-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:500px){.how-grid{grid-template-columns:1fr}}
+    .how-card{background:rgba(248,244,232,0.025);border:1px solid rgba(201,168,76,0.1);padding:32px 26px;border-radius:2px;transition:border-color 0.3s,background 0.3s}
+    .how-card:hover{border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.04)}
+    .how-step{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.3em;color:var(--gold);opacity:0.6;margin-bottom:14px}
+    .how-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--cream);margin-bottom:12px;line-height:1.25}
+    .how-body{font-size:13px;font-weight:300;line-height:1.75;color:rgba(248,244,232,0.5)}
+
+    /* ── COMPANY CARDS ── */
+    .company-cards{display:flex;flex-direction:column;gap:56px;margin-top:60px}
+    .company-card{display:grid;grid-template-columns:280px 1fr;gap:50px;align-items:start;padding:40px;background:rgba(248,244,232,0.02);border:1px solid rgba(201,168,76,0.1);border-radius:3px;transition:border-color 0.3s}
+    .company-card:hover{border-color:rgba(201,168,76,0.25)}
+    @media(max-width:800px){.company-card{grid-template-columns:1fr;gap:28px;padding:28px}}
+    .company-card-left{}
+    .company-logo-block{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,0.06);border:1.5px solid rgba(201,168,76,0.2);margin-bottom:20px;overflow:hidden}
+    .company-logo-block img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .company-logo-text{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--gold)}
+    .company-vm-badge{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,168,76,0.6);background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);padding:5px 12px;border-radius:1px;display:inline-block;margin-bottom:12px}
+    .company-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--cream);margin-bottom:6px;line-height:1.2}
+    .company-sector{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,244,232,0.35);margin-bottom:18px}
+    .company-facts{list-style:none;padding:0}
+    .company-facts li{font-size:12px;font-weight:300;color:rgba(248,244,232,0.5);padding:5px 0;border-bottom:1px solid rgba(248,244,232,0.05);line-height:1.5}
+    .company-facts li:last-child{border-bottom:none}
+    .company-facts li::before{content:'→ ';color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:10px}
+    .company-card-right h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.2}
+    .company-card-right h3 em{font-style:italic;color:var(--gold-soft)}
+    .company-card-right p{font-size:15px;font-weight:300;line-height:1.82;color:rgba(248,244,232,0.58);margin-bottom:16px}
+    .strategy-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .strategy-tag{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,244,232,0.45);background:rgba(248,244,232,0.04);border:1px solid rgba(248,244,232,0.09);padding:7px 14px;border-radius:1px}
+
+    /* ── WORKING GROUP ── */
+    .wg-visual{display:flex;justify-content:center;gap:0;margin:50px 0 40px;flex-wrap:wrap;gap:16px}
+    .wg-node{display:flex;flex-direction:column;align-items:center;gap:8px}
+    .wg-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--obsidian);background:var(--gold);position:relative}
+    .wg-circle.outline{background:transparent;color:var(--gold);border:1.5px solid rgba(201,168,76,0.4)}
+    .wg-circle::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px dashed rgba(201,168,76,0.2)}
+    .wg-label{font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(248,244,232,0.4);text-align:center;max-width:70px}
+
+    /* ── APPLY SECTION ── */
+    .apply-section{background:linear-gradient(135deg,rgba(201,168,76,0.07) 0%,rgba(201,168,76,0.02) 100%);border:1px solid rgba(201,168,76,0.2);border-radius:3px;padding:clamp(50px,6vw,80px) clamp(32px,5vw,70px);text-align:center;margin-top:60px}
+    .apply-section h3{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;color:var(--cream);margin-bottom:20px;line-height:1.2}
+    .apply-section h3 em{font-style:italic;color:var(--gold-soft)}
+    .apply-section p{font-size:16px;font-weight:300;color:rgba(248,244,232,0.55);margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.8}
+    .apply-steps{display:flex;gap:0;margin:40px 0;border:1px solid rgba(201,168,76,0.12);border-radius:2px;overflow:hidden;flex-wrap:wrap}
+    .apply-step{flex:1;min-width:160px;padding:28px 20px;text-align:center;border-right:1px solid rgba(201,168,76,0.1)}
+    .apply-step:last-child{border-right:none}
+    .apply-step-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:rgba(201,168,76,0.3);line-height:1;margin-bottom:8px}
+    .apply-step-title{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,244,232,0.5);margin-bottom:8px}
+    .apply-step-body{font-size:12px;font-weight:300;color:rgba(248,244,232,0.35);line-height:1.6}
+    .btn-gold{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--obsidian);background:var(--gold);padding:16px 44px;text-decoration:none;border-radius:1px;transition:background 0.2s;display:inline-block;margin-top:8px}
+    .btn-gold:hover{background:var(--gold-deep)}
+    .btn-outline{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.4);padding:16px 44px;text-decoration:none;border-radius:1px;transition:all 0.2s;display:inline-block}
+    .btn-outline:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+    .cta-pair{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+
+    /* ── FOOTER ── */
+    footer{padding:50px clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(248,244,232,0.06);text-align:center}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:rgba(248,244,232,0.4);letter-spacing:0.08em;margin-bottom:10px}
+    .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,244,232,0.18)}
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">Studex Global Markets</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="founder.html" class="nav-link">Founder</a>
+    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="#apply" class="nav-cta">Apply for a VM →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="platform-hero">
+  <div class="platform-hero-inner">
+    <div class="hero-eyebrow">Studex Global Markets Platform</div>
+    <h1 class="hero-title">Interconnected<br><em>Cognitive VMs</em></h1>
+    <p class="hero-sub">A new category of business infrastructure where each company operates its own AI-powered Virtual Machine — and together, those machines form the most intelligent trade ecosystem Africa has ever seen.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Founding VMs</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Super Agents</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">14</div><div class="hero-stat-label">Years of AI</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">∞</div><div class="hero-stat-label">Open Cohorts</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ICVMS DIAGRAM SECTION
+══════════════════════════════════════════ -->
+<section class="section" style="background:rgba(10,10,10,1);border-top:1px solid rgba(201,168,76,0.1)">
+  <div class="container">
+    <div class="section-eyebrow">System Architecture</div>
+    <h2 class="section-title">The <em>ICVMS</em> Diagram</h2>
+    <p class="section-body">Studex sits at the apex — the ecosystem orchestrator. Below it, five Virtual Machines, each a dedicated business environment. Every VM is connected to Studex and to each other through co-collaborative working groups.</p>
+
+    <div class="diagram-wrap" id="diagram-wrap">
+
+      <!-- SVG LINES (drawn by JS after layout) -->
+      <svg class="diagram-svg" id="diagram-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <!-- ROW 1: Studex HUB -->
+      <div class="diagram-row-top">
+        <div class="vm-node hub" id="node-studex">
+          <div class="vm-screen">
+            <div class="vm-logo">
+              <img src="logos/studex-global-markets.jpg" alt="Studex Global Markets" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>
+            </div>
+            <div class="vm-name">Studex Global<br>Markets</div>
+            <div class="vm-vm-id">HUB · ORCHESTRATOR</div>
+            <div class="vm-port"></div>
+          </div>
+          <div class="vm-stand-neck"></div>
+          <div class="vm-stand-base"></div>
+          <div class="vm-label">Ecosystem Intelligence<br>&amp; Orchestration</div>
+        </div>
+      </div>
+
+      <!-- ROW 2: AfricaBiz (centre connector) -->
+      <div class="diagram-row-mid">
+        <div class="vm-node" id="node-africabiz">
+          <div class="vm-screen">
+            <div class="vm-logo">
+              <img src="images/africabiz-business-card.jpg" alt="AfricaBiz" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>
+            </div>
+            <div class="vm-name">AfricaBiz<br>(Pty) Ltd</div>
+            <div class="vm-vm-id">VM 00 · GATEWAY</div>
+            <div class="vm-port"></div>
+          </div>
+          <div class="vm-stand-neck"></div>
+          <div class="vm-stand-base"></div>
+          <div class="vm-label">SA–Russia Corridor<br>&amp; Partner Hosting</div>
+        </div>
+      </div>
+
+      <!-- ROW 3: Four partner VMs -->
+      <div class="diagram-row-bottom">
+        <div class="vm-node" id="node-ntechlab">
+          <div class="vm-screen">
+            <div class="vm-logo"><div class="vm-logo-text">N</div></div>
+            <div class="vm-name">NtechLab</div>
+            <div class="vm-vm-id">VM 01</div>
+            <div class="vm-port"></div>
+          </div>
+          <div class="vm-stand-neck"></div>
+          <div class="vm-stand-base"></div>
+          <div class="vm-label">AI · Computer<br>Vision</div>
+        </div>
+        <div class="vm-node" id="node-art">
+          <div class="vm-screen">
+            <div class="vm-logo"><div class="vm-logo-text">ART</div></div>
+            <div class="vm-name">ART Engineering<br>MDC</div>
+            <div class="vm-vm-id">VM 02</div>
+            <div class="vm-port"></div>
+          </div>
+          <div class="vm-stand-neck"></div>
+          <div class="vm-stand-base"></div>
+          <div class="vm-label">Data Centres<br>&amp; Infrastructure</div>
+        </div>
+        <div class="vm-node" id="node-pharma">
+          <div class="vm-screen">
+            <div class="vm-logo"><div class="vm-logo-text" style="font-size:10px">PH</div></div>
+            <div class="vm-name">Pharmasyntez<br>Group</div>
+            <div class="vm-vm-id">VM 03</div>
+            <div class="vm-port"></div>
+          </div>
+          <div class="vm-stand-neck"></div>
+          <div class="vm-stand-base"></div>
+          <div class="vm-label">BioPharma<br>&amp; Health</div>
+        </div>
+        <div class="vm-node" id="node-grm">
+          <div class="vm-screen">
+            <div class="vm-logo"><div class="vm-logo-text">GRM</div></div>
+            <div class="vm-name">Project Phoenix<br>+ GRM</div>
+            <div class="vm-vm-id">VM 04</div>
+            <div class="vm-port"></div>
+          </div>
+          <div class="vm-stand-neck"></div>
+          <div class="vm-stand-base"></div>
+          <div class="vm-label">Conservation<br>&amp; AgriTech</div>
+        </div>
+      </div>
+
+    </div><!-- .diagram-wrap -->
+
+    <!-- Diagram legend -->
+    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:24px;height:1px;background:var(--gold)"></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(248,244,232,0.35);letter-spacing:0.15em;text-transform:uppercase">Direct VM Link</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:24px;height:1px;background:rgba(201,168,76,0.3);border-top:1px dashed rgba(201,168,76,0.3)"></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(248,244,232,0.35);letter-spacing:0.15em;text-transform:uppercase">Working Group Channel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section" style="background:var(--obsidian);border-top:1px solid rgba(248,244,232,0.05)">
+  <div class="container">
+    <div class="section-eyebrow">How It Works</div>
+    <h2 class="section-title">Your Business. <em>Amplified.</em></h2>
+    <p class="section-body">Each Virtual Machine is a dedicated, private AI-powered environment. Your agents work. You approve. The ecosystem compounds.</p>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-step">Step 01</div>
+        <div class="how-title">Your VM is Deployed</div>
+        <div class="how-body">A private Virtual Machine is configured for your company. Eight Super Agents are mapped to your business goals, operations, and strategy. You retain full ownership and visibility.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-step">Step 02</div>
+        <div class="how-title">Agents Execute</div>
+        <div class="how-body">Super Agents take on your day-to-day business operations — research, strategy execution, communications, market analysis, content, compliance. Every action requires your human approval at critical steps.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-step">Step 03</div>
+        <div class="how-title">VMs Interconnect</div>
+        <div class="how-body">Your VM joins the ICVMS network. You participate in co-collaborative working groups with other companies in the ecosystem — sharing intelligence and building joint market strategies.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-step">Step 04</div>
+        <div class="how-title">New VMs Emerge</div>
+        <div class="how-body">From working group collaborations, new Virtual Machines can be spawned to tackle specific market opportunities — joint ventures in a box, governed by all participating companies.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-step">Step 05</div>
+        <div class="how-title">The Friday Ritual</div>
+        <div class="how-body">Every Friday, the full ecosystem convenes online. Reports are shared. Progress is celebrated. The community grows. The internet is not a compromise — it is the infrastructure of belonging.</div>
+      </div>
+      <div class="how-card">
+        <div class="how-step">Step 06</div>
+        <div class="how-title">Compound & Scale</div>
+        <div class="how-body">Every week in the ecosystem, your agents learn more about your business, your market, and your partners. The longer you stay, the sharper the intelligence. Compounding is the strategy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPANY PROFILES ── -->
+<section class="section" style="background:rgba(8,8,8,1);border-top:1px solid rgba(201,168,76,0.1)" id="companies">
+  <div class="container">
+    <div class="section-eyebrow">Founding Cohort — First Five VMs</div>
+    <h2 class="section-title">The Companies <em>Building Africa</em></h2>
+    <p class="section-body">Five organizations. Five Virtual Machines. One shared mission to bring the world's best technology to Africa — and take Africa's best to the world.</p>
+
+    <div class="company-cards">
+
+      <!-- ── AfricaBiz ── -->
+      <div class="company-card">
+        <div class="company-card-left">
+          <div class="company-vm-badge">VM 00 · Gateway Partner</div>
+          <div class="company-logo-block">
+            <img src="images/africabiz-business-card.jpg" alt="AfricaBiz"/>
+          </div>
+          <div class="company-name">AfricaBiz (Pty) Ltd</div>
+          <div class="company-sector">Strategic Business Development · SA–Russia Corridor</div>
+          <ul class="company-facts">
+            <li>Founder &amp; Director: Natalia Mordvinova</li>
+            <li>Tagline: "Connecting New Horizons"</li>
+            <li>Website: africabiz.ru</li>
+            <li>WhatsApp: +27 76 269 8044</li>
+            <li>Email: n@africabiz.ru</li>
+          </ul>
+        </div>
+        <div class="company-card-right">
+          <h3>The <em>Bridge</em> Between Continents</h3>
+          <p>AfricaBiz is the gateway — the company that made SA–Russia Trade Week 2026 possible and the strategic partner that hosts and enables all four founding cohort companies entering the Studex ecosystem. Under Natalia Mordvinova's leadership, AfricaBiz has built the most significant private SA–Russia business corridor of the decade.</p>
+          <p>Within the ICVMS, AfricaBiz operates as the relationship intelligence layer — managing the cultural, logistical, and commercial bridges between Russian companies and their South African market entry. Their VM ensures every partner company is contextually prepared for the African market before they arrive.</p>
+          <p>Together with Studex, AfricaBiz co-hosts the working group sessions, coordinates the Friday ecosystem calls, and ensures the community stays cohesive across time zones and languages. The corridor they have built is not a transaction — it is a civilizational connection.</p>
+          <div class="strategy-tags">
+            <span class="strategy-tag">SA–Russia Corridor</span>
+            <span class="strategy-tag">Market Entry</span>
+            <span class="strategy-tag">Working Group Hosting</span>
+            <span class="strategy-tag">Cultural Intelligence</span>
+            <span class="strategy-tag">Partner Onboarding</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── NtechLab ── -->
+      <div class="company-card">
+        <div class="company-card-left">
+          <div class="company-vm-badge">VM 01 · AI Vision</div>
+          <div class="company-logo-block"><div class="company-logo-text">N</div></div>
+          <div class="company-name">NtechLab</div>
+          <div class="company-sector">AI Facial Recognition · Computer Vision</div>
+          <ul class="company-facts">
+            <li>#1 NIST-ranked facial recognition globally</li>
+            <li>Deployed in 26+ countries</li>
+            <li>500,000+ cameras integrated</li>
+            <li>1.5 billion faces processed in 0.3 seconds</li>
+            <li>Already live in South Africa — April 2026</li>
+          </ul>
+        </div>
+        <div class="company-card-right">
+          <h3>Computer Vision, <em>African Scale</em></h3>
+          <p>NtechLab is the world's #1 ranked facial recognition and computer vision company — confirmed by NIST, deployed in 26 countries, and already operating in South Africa after a landmark shopping centre pilot in April 2026. Their technology processes 1.5 billion faces in under 0.3 seconds.</p>
+          <p>Within the Studex ecosystem, NtechLab and Studex are building a comprehensive computer vision strategy for Africa — starting with infrastructure security, retail intelligence, and public safety applications, and expanding into smart city technology across the continent.</p>
+          <p>Beyond the technology deployment, the NtechLab working group within ICVMS will build Africa's Linux and open-source developer community — hosting hackathons, online gaming events, and skills development programmes for young African engineers. The goal is not just to deploy AI in Africa, but to build the generation that will build the next wave of African AI.</p>
+          <div class="strategy-tags">
+            <span class="strategy-tag">Computer Vision</span>
+            <span class="strategy-tag">Smart Cities</span>
+            <span class="strategy-tag">African AI Infrastructure</span>
+            <span class="strategy-tag">Linux Community</span>
+            <span class="strategy-tag">Hackathons</span>
+            <span class="strategy-tag">Skills Development</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ART Engineering ── -->
+      <div class="company-card">
+        <div class="company-card-left">
+          <div class="company-vm-badge">VM 02 · Infrastructure</div>
+          <div class="company-logo-block"><div class="company-logo-text" style="font-size:14px">ART</div></div>
+          <div class="company-name">ART Engineering MDC</div>
+          <div class="company-sector">Data Centre Infrastructure · Telecom</div>
+          <ul class="company-facts">
+            <li>50+ data centres built across Russia</li>
+            <li>TIER III and TIER IV certified</li>
+            <li>Operates in -60°C to +60°C environments</li>
+            <li>16-week deployment timeline</li>
+            <li>Russia's largest data centre company</li>
+          </ul>
+        </div>
+        <div class="company-card-right">
+          <h3>The <em>Infrastructure</em> of Intelligence</h3>
+          <p>ART Engineering MDC is Russia's largest data centre company — 50+ facilities, TIER III and IV certified, capable of operating in the most extreme climate conditions on Earth. They don't just build data centres. They build the sovereign infrastructure that allows nations to own their digital future.</p>
+          <p>The Studex partnership with ART Engineering is foundational to the entire ICVMS architecture. Together, we will build private data centres in Africa — physical infrastructure owned and operated on African soil — where Virtual Machines run with true data sovereignty. Every ICVMS VM will eventually have the option to run on African-owned, ART-engineered infrastructure.</p>
+          <p>The working group strategy goes further: the private data centres will host the agents themselves. Each business in the ICVMS ecosystem will have a dedicated physical home — a real machine, in Africa, executing real business goals. This is the business-in-a-box made physical. AI not as a cloud service, but as owned infrastructure with compounding returns.</p>
+          <div class="strategy-tags">
+            <span class="strategy-tag">Private Data Centres</span>
+            <span class="strategy-tag">African Sovereign Infrastructure</span>
+            <span class="strategy-tag">TIER III/IV Hosting</span>
+            <span class="strategy-tag">Agent Infrastructure</span>
+            <span class="strategy-tag">VM Physical Hosting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Pharmasyntez ── -->
+      <div class="company-card">
+        <div class="company-card-left">
+          <div class="company-vm-badge">VM 03 · BioPharma</div>
+          <div class="company-logo-block"><div class="company-logo-text" style="font-size:12px">PH</div></div>
+          <div class="company-name">Pharmasyntez Group</div>
+          <div class="company-sector">Pharmaceuticals · Health &amp; Wellness</div>
+          <ul class="company-facts">
+            <li>Forbes Top 3 Russia Pharma 2025</li>
+            <li>100 million packages produced annually</li>
+            <li>9 manufacturing plants, 6,000 staff</li>
+            <li>PCR technology transfer to Africa</li>
+            <li>First entry: Swaziland &amp; Mozambique</li>
+          </ul>
+        </div>
+        <div class="company-card-right">
+          <h3>Healthcare Made <em>in Africa</em></h3>
+          <p>Pharmasyntez Group is Forbes-ranked in Russia's top 3 pharmaceutical companies — 100 million packages per year, 9 manufacturing plants, 6,000 employees, and a technology portfolio that includes PCR production and advanced vaccine manufacturing. They are the most capable pharmaceutical partner Africa has ever had access to.</p>
+          <p>The Studex strategy with Pharmasyntez is to build local pharmaceutical production in Africa — starting with export processing zones in Swaziland and Mozambique, and expanding across East Africa through Tanzania, Mombasa, Rwanda, Uganda, DRC, and Burundi, where cold storage and strategic economic positioning create natural hubs.</p>
+          <p>The focus addresses the 66% import dependency of African medicines from outside the continent. Starting with tuberculosis, HIV/AIDS treatment, and female hygiene products — basic health and wellness needs that hundreds of millions of Africans lack access to. Studex will build the online distribution layer: health and wellness e-commerce platforms powered by Studex Health, a young Black-empowered company backed by Russian pharmaceutical patents, manufacturing in Africa, for Africa and the world.</p>
+          <div class="strategy-tags">
+            <span class="strategy-tag">Local Pharma Production</span>
+            <span class="strategy-tag">Studex Health Platform</span>
+            <span class="strategy-tag">TB &amp; HIV Treatment</span>
+            <span class="strategy-tag">Women's Health</span>
+            <span class="strategy-tag">East Africa Logistics</span>
+            <span class="strategy-tag">Export Processing Zones</span>
+            <span class="strategy-tag">66% Import Reversal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project Phoenix + GRM ── -->
+      <div class="company-card">
+        <div class="company-card-left">
+          <div class="company-vm-badge">VM 04 · Conservation + AgriTech</div>
+          <div class="company-logo-block"><div class="company-logo-text">GRM</div></div>
+          <div class="company-name">Project Phoenix + GRM</div>
+          <div class="company-sector">Wildlife Conservation · Agricultural Genetics</div>
+          <ul class="company-facts">
+            <li>Studex Wildlife Hypothesis — active</li>
+            <li>NW Rhino de-extinction programme</li>
+            <li>IVF genetic success — 2024</li>
+            <li>SPonWeb BLUP/GBLUP genetic analysis</li>
+            <li>Foot &amp; Mouth Disease vaccine — SA</li>
+          </ul>
+        </div>
+        <div class="company-card-right">
+          <h3>Rewilding Africa, <em>Scientifically</em></h3>
+          <p>Project Phoenix and GRM represent the Studex Wildlife Hypothesis — the conviction that Africa's most endangered species can be protected, restored, and economically sustained through cutting-edge genetic science and agentic business infrastructure. The IVF genetic success of 2024 for the North-West Rhino programme is already proof of concept.</p>
+          <p>The partnership strategy with GRM focuses on bringing Russia's Foot and Mouth Disease (FMD) vaccine technology to South Africa — manufacturing locally and distributing throughout Africa. This addresses one of the continent's most economically devastating livestock diseases, protecting millions of small-scale farmers and opening new agricultural export corridors that have been closed for decades due to FMD status.</p>
+          <p>The working group extends into youth development, university partnerships, skills exchange, and new medicine and vaccine development for African-specific disease profiles. The dream is not just to save the rhino — it is to build a generation of African scientists, vets, and geneticists who can solve Africa's conservation and agricultural challenges with their own minds and tools.</p>
+          <div class="strategy-tags">
+            <span class="strategy-tag">Rhino De-extinction</span>
+            <span class="strategy-tag">FMD Vaccine Manufacturing</span>
+            <span class="strategy-tag">African Livestock Protection</span>
+            <span class="strategy-tag">University Partnerships</span>
+            <span class="strategy-tag">Skills Exchange</span>
+            <span class="strategy-tag">Vaccine R&amp;D</span>
+            <span class="strategy-tag">Studex Wildlife Hypothesis</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .company-cards -->
+  </div>
+</section>
+
+<!-- ── WORKING GROUP ── -->
+<section class="section" style="background:var(--obsidian);border-top:1px solid rgba(201,168,76,0.1)">
+  <div class="container" style="text-align:center">
+    <div class="section-eyebrow">Collective Intelligence</div>
+    <h2 class="section-title" style="text-align:center">The <em>Working Group</em></h2>
+    <p class="section-body" style="max-width:620px;margin:0 auto">When all five VMs activate their shared working group channel, the ecosystem enters its most powerful state. Companies that compete globally collaborate here — building joint market strategies, sharing insights, and creating new opportunities for others to join.</p>
+
+    <div class="wg-visual">
+      <div class="wg-node"><div class="wg-circle">SGM</div><div class="wg-label">Studex</div></div>
+      <div class="wg-node"><div class="wg-circle">AFB</div><div class="wg-label">AfricaBiz</div></div>
+      <div class="wg-node"><div class="wg-circle">NL</div><div class="wg-label">NtechLab</div></div>
+      <div class="wg-node"><div class="wg-circle">ART</div><div class="wg-label">ART Eng</div></div>
+      <div class="wg-node"><div class="wg-circle">PH</div><div class="wg-label">Pharmasyntez</div></div>
+      <div class="wg-node"><div class="wg-circle">GRM</div><div class="wg-label">Project Phoenix</div></div>
+      <div class="wg-node"><div class="wg-circle outline">+</div><div class="wg-label">Your Company</div></div>
+    </div>
+
+    <p style="font-size:15px;font-weight:300;color:rgba(248,244,232,0.45);max-width:560px;margin:0 auto;line-height:1.8">The working group is open. Apply, configure, get accepted — and your VM joins this network. The ecosystem creates opportunities not just for the companies in it, but for every young person, every startup, and every community that those companies touch.</p>
+  </div>
+</section>
+
+<!-- ── APPLY ── -->
+<section class="section" style="background:rgba(8,8,8,1);border-top:1px solid rgba(201,168,76,0.1)" id="apply">
+  <div class="container">
+    <div class="apply-section">
+      <h3>Join the <em>Ecosystem</em></h3>
+      <p>The Studex Global Markets Virtual Machine network is open for applications. If your company is ready to operate at the frontier of African trade — apply now.</p>
+      <div class="apply-steps">
+        <div class="apply-step">
+          <div class="apply-step-num">01</div>
+          <div class="apply-step-title">Submit Application</div>
+          <div class="apply-step-body">Tell us about your company, your market, and your goals.</div>
+        </div>
+        <div class="apply-step">
+          <div class="apply-step-num">02</div>
+          <div class="apply-step-title">Configure Agents</div>
+          <div class="apply-step-body">Map your operations to the eight Super Agent framework.</div>
+        </div>
+        <div class="apply-step">
+          <div class="apply-step-num">03</div>
+          <div class="apply-step-title">Compatibility Check</div>
+          <div class="apply-step-body">The system evaluates alignment with the ecosystem strategy.</div>
+        </div>
+        <div class="apply-step">
+          <div class="apply-step-num">04</div>
+          <div class="apply-step-title">VM Deployed</div>
+          <div class="apply-step-body">Your private Virtual Machine goes live. Your agents begin.</div>
+        </div>
+        <div class="apply-step">
+          <div class="apply-step-num">05</div>
+          <div class="apply-step-title">Join the Network</div>
+          <div class="apply-step-body">Connect to working groups. Compound. Build Africa's future.</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:rgba(248,244,232,0.35);margin-bottom:0">Applications reviewed on a rolling basis · hello@studexglobalmarkets.com</p>
+      <div class="cta-pair">
+        <a href="mailto:hello@studexglobalmarkets.com?subject=VM Application — Studex Global Markets" class="btn-gold">Apply for a Virtual Machine →</a>
+        <a href="founder.html" class="btn-outline">Read the Founder's Vision →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Studex Global Markets</div>
+  <div class="footer-copy">© 2026 Aesthetics Global Markets Technology · All Rights Reserved · hello@studexglobalmarkets.com</div>
+</footer>
+
+<script>
+// ── Draw SVG connection lines between nodes ──
+(function() {
+  function getCentre(el, wrap) {
+    const r = el.getBoundingClientRect();
+    const w = wrap.getBoundingClientRect();
+    return { x: r.left - w.left + r.width / 2, y: r.top - w.top + r.height / 2 };
+  }
+
+  function drawLines() {
+    const svg = document.getElementById('diagram-svg');
+    const wrap = document.getElementById('diagram-wrap');
+    if (!svg || !wrap) return;
+
+    svg.setAttribute('viewBox', `0 0 ${wrap.offsetWidth} ${wrap.offsetHeight}`);
+    svg.innerHTML = '';
+
+    const hubEl = document.getElementById('node-studex');
+    const afbEl = document.getElementById('node-africabiz');
+    const nodes = ['node-ntechlab','node-art','node-pharma','node-grm'].map(id => document.getElementById(id));
+
+    if (!hubEl || !afbEl) return;
+
+    const hub = getCentre(hubEl.querySelector('.vm-screen'), wrap);
+    const afb = getCentre(afbEl.querySelector('.vm-screen'), wrap);
+
+    function line(x1,y1,x2,y2,dashed,alpha){
+      const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+      l.setAttribute('x1',x1); l.setAttribute('y1',y1);
+      l.setAttribute('x2',x2); l.setAttribute('y2',y2);
+      l.setAttribute('stroke',`rgba(201,168,76,${alpha||0.35})`);
+      l.setAttribute('stroke-width','1.5');
+      if(dashed) l.setAttribute('stroke-dasharray','6 5');
+      svg.appendChild(l);
+    }
+
+    function dot(x,y){
+      const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r','3');
+      c.setAttribute('fill','rgba(201,168,76,0.6)');
+      svg.appendChild(c);
+    }
+
+    // Hub → AfricaBiz
+    line(hub.x, hub.y, afb.x, afb.y, false, 0.5);
+    dot(hub.x, hub.y); dot(afb.x, afb.y);
+
+    // AfricaBiz → each partner VM
+    nodes.forEach(n => {
+      if (!n) return;
+      const nc = getCentre(n.querySelector('.vm-screen'), wrap);
+      line(afb.x, afb.y, nc.x, nc.y, false, 0.35);
+      dot(nc.x, nc.y);
+      // Hub also directly connects
+      line(hub.x, hub.y, nc.x, nc.y, true, 0.15);
+    });
+
+    // Cross-connections between partners (working group lines)
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        if(!nodes[i]||!nodes[j]) continue;
+        const a = getCentre(nodes[i].querySelector('.vm-screen'), wrap);
+        const b = getCentre(nodes[j].querySelector('.vm-screen'), wrap);
+        line(a.x, a.y, b.x, b.y, true, 0.1);
+      }
+    }
+  }
+
+  // Draw after fonts/layout settle
+  window.addEventListener('load', drawLines);
+  window.addEventListener('resize', drawLines);
+  setTimeout(drawLines, 400);
+})();
+</script>
+</body>
+</html>
